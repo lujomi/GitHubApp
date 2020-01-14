@@ -1,4 +1,4 @@
-package com.example.lmimica.githubapp.Api
+package com.example.lmimica.githubapp.api
 
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 object ApiClient {
 
     private const val BASE_URL = "https://api.github.com/"
-    val getClient: ApiRequest by lazy {
+    val getClient: GithubApi by lazy {
         val interceptor = HttpLoggingInterceptor()
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
         val client = OkHttpClient.Builder().addInterceptor(interceptor).build()
@@ -19,7 +19,7 @@ object ApiClient {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
-        return@lazy retrofit.create(ApiRequest::class.java)
+        return@lazy retrofit.create(GithubApi::class.java)
     }
 
 }

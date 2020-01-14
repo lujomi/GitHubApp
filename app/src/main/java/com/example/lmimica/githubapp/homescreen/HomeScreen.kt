@@ -1,17 +1,15 @@
-package com.example.lmimica.githubapp.HomeScreen
+package com.example.lmimica.githubapp.homescreen
 
 import android.content.Intent
 import android.os.Bundle
-import android.text.Editable
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.lmimica.githubapp.Model.User
-import com.example.lmimica.githubapp.MyTextWatcher
+import com.example.lmimica.githubapp.model.Repository
 import com.example.lmimica.githubapp.R
-import com.example.lmimica.githubapp.RepositoryDetailsScreen.RepositoryDetailsScreen
-import com.example.lmimica.githubapp.UserDetailsScreen.UserDetailsScreen
+import com.example.lmimica.githubapp.repositorydetailscreen.RepositoryDetailsScreen
+import com.example.lmimica.githubapp.userdetailscreen.UserDetailsScreen
 import kotlinx.android.synthetic.main.home_screen.*
 import timber.log.Timber
 
@@ -32,14 +30,8 @@ class HomeScreen : AppCompatActivity(), HomeContract.View, HomeScreenAdapter.Use
 
         homeScreenPresenter.attach(this)
 
-        query_edit_text.addTextChangedListener(object : MyTextWatcher(){
-            override fun afterTextChanged(p0: Editable?) {
-                query = p0.toString()
-            }
-        })
-
         send_query_btn.setOnClickListener {
-            homeScreenPresenter.sendRequest(query)
+            homeScreenPresenter.sendRequest(query_edit_text.text.toString())
         }
     }
 
@@ -48,11 +40,11 @@ class HomeScreen : AppCompatActivity(), HomeContract.View, HomeScreenAdapter.Use
         super.onDestroy()
     }
 
-    override fun showList(users: List<User>) {
+    override fun showList(repositories: List<Repository>) {
         recycler_view.layoutManager = LinearLayoutManager(this)
         recycler_view.adapter =
             HomeScreenAdapter(
-                users,
+                repositories,
                 this@HomeScreen
             )
     }
@@ -61,23 +53,23 @@ class HomeScreen : AppCompatActivity(), HomeContract.View, HomeScreenAdapter.Use
         Timber.d(message)
     }
 
-    override fun showUsersDetailsScreen(user: User) {
+    override fun showUsersDetailsScreen(repository: Repository) {
         val intent = Intent(this,UserDetailsScreen::class.java)
         startActivity(intent)
-        Toast.makeText(this, user.login, Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, repository.name, Toast.LENGTH_SHORT).show()
     }
 
-    override fun showRepositoryDetailsScreen(user: User) {
+    override fun showRepositoryDetailsScreen(repository: Repository) {
         val intent = Intent(this,RepositoryDetailsScreen::class.java)
         startActivity(intent)
-        Toast.makeText(this, user.avatar_url, Toast.LENGTH_SHORT).show()
+//        Toast.makeText(this, repository.avatar_url, Toast.LENGTH_SHORT).show()
     }
 
-    override fun userDetailsClicked(user: User) {
-        homeScreenPresenter.onUserDetailsClicked(user)
+    override fun userDetailsClicked(repository: Repository) {
+        homeScreenPresenter.onUserDetailsClicked(repository)
     }
 
-    override fun repoositoryDetailsClicked(user: User) {
-        homeScreenPresenter.onRepositoryDetailsClicked(user)
+    override fun repoositoryDetailsClicked(repository: Repository) {
+        homeScreenPresenter.onRepositoryDetailsClicked(repository)
     }
 }
