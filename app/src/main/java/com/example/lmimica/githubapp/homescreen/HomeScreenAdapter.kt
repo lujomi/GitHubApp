@@ -62,6 +62,7 @@ class HomeScreenAdapter(
         holder.repositoryName.text = (repositories.get(position).name)
         holder.forksNumb.text = (repositories.get(position).forks)
         holder.issuesNumb.text = (repositories.get(position).open_issues)
+        holder.followersNumb.text = (repositories.get(position).watchers)
         holder.userName.text = (repositories.get(position).owner.login)
     }
 

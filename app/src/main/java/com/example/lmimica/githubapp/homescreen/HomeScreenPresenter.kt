@@ -23,7 +23,7 @@ class HomeScreenPresenter : HomeContract.Presenter {
     }
 
     override fun sendRequest(query: String) {
-        api.getUsers(query).enqueue(object : Callback<RepositoriesResponse> {
+        api.getRepository(query).enqueue(object : Callback<RepositoriesResponse> {
             override fun onFailure(call: Call<RepositoriesResponse>, t: Throwable) {
                 view?.showLogMessage("Error in onFailure $t")
             }
