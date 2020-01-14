@@ -62,7 +62,7 @@ class HomeScreen : AppCompatActivity(), HomeContract.View, HomeScreenAdapter.Use
     override fun showRepositoryDetailsScreen(repository: Repository) {
         val intent = Intent(this,RepositoryDetailsScreen::class.java)
         startActivity(intent)
-//        Toast.makeText(this, repository.avatar_url, Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, repository.owner.avatar_url, Toast.LENGTH_SHORT).show()
     }
 
     override fun userDetailsClicked(repository: Repository) {
