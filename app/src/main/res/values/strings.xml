@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">GitHub app</string>
+    <string name="user_name">Here is user name</string>
+    <string name="repo_name">Here is repository name</string>
+    <string name="followers_numb">20</string>
+    <string name="forks_numb">10</string>
+    <string name="issues_numb">2</string>
+    <string name="btn_sort_by_stars">Sort by stars</string>
+    <string name="btn_sort_by_forks">Sort by forks</string>
+    <string name="btn_sort_by_updated">Sort by updated</string>
+    <string name="enter_query_hint">Enter query</string>
+</resources>
