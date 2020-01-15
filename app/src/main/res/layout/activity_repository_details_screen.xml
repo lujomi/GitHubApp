@@ -1,15 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".repositorydetailscreen.RepositoryDetailsScreen">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="This is repo details screen">
 
-    </TextView>
+        <TextView
+            android:id="@+id/repository_name_screen"
+            android:hint="@string/repo_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/programming_language_name"
+            android:hint="@string/programming_language"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/btn_show_user"
+            android:hint="@string/show_user_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/btn_open_web"
+            android:hint="@string/open_web_repo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
 </LinearLayout>

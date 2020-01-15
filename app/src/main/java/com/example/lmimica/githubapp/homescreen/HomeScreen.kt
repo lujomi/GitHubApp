@@ -2,10 +2,10 @@ package com.example.lmimica.githubapp.homescreen
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.lmimica.githubapp.Constants
 import com.example.lmimica.githubapp.model.Repository
 import com.example.lmimica.githubapp.R
 import com.example.lmimica.githubapp.repositorydetailscreen.RepositoryDetailsScreen
@@ -17,7 +17,6 @@ class HomeScreen : AppCompatActivity(), HomeContract.View, HomeScreenAdapter.Use
 
     private val homeScreenPresenter =
         HomeScreenPresenter()
-    var query: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,14 +54,14 @@ class HomeScreen : AppCompatActivity(), HomeContract.View, HomeScreenAdapter.Use
 
     override fun showUsersDetailsScreen(repository: Repository) {
         val intent = Intent(this,UserDetailsScreen::class.java)
+        intent.putExtra(Constants.USER_INFO_KEY, repository.userInfo)
         startActivity(intent)
-        Toast.makeText(this, repository.userInfo.userName, Toast.LENGTH_SHORT).show()
     }
 
     override fun showRepositoryDetailsScreen(repository: Repository) {
         val intent = Intent(this,RepositoryDetailsScreen::class.java)
+        intent.putExtra(Constants.REPOSITIRY_KEY, repository)
         startActivity(intent)
-        Toast.makeText(this, repository.userInfo.userImage, Toast.LENGTH_SHORT).show()
     }
 
     override fun userDetailsClicked(repository: Repository) {

@@ -32,12 +32,12 @@ class HomeScreenAdapter(
 
         init {
             userImage.setOnClickListener {
-                var position: Int = adapterPosition
+                val position: Int = adapterPosition
                 listener.userDetailsClicked(repositories[position])
             }
 
             userInfoContainer.setOnClickListener {
-                var position: Int = adapterPosition
+                val position: Int = adapterPosition
                 listener.repoositoryDetailsClicked(repositories[position])
             }
 
@@ -56,14 +56,14 @@ class HomeScreenAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         Glide.with(holder.itemView.context)
-            .load(repositories.get(position).userInfo.userImage)
+            .load(repositories.get(position).userInfo?.userImage)
             .into(holder.userImage)
 
-        holder.repositoryName.text = (repositories.get(position).repositoryName)
-        holder.forksNumb.text = (repositories.get(position).forksNumber)
-        holder.issuesNumb.text = (repositories.get(position).issuesNumber)
-        holder.followersNumb.text = (repositories.get(position).followersNumber)
-        holder.userName.text = (repositories.get(position).userInfo.userName)
+        holder.repositoryName.text = (holder.itemView.context.getString(R.string.repo_name, repositories.get(position).repositoryName))
+        holder.forksNumb.text = (holder.itemView.context.getString(R.string.forks_numb, repositories.get(position).forksNumber))
+        holder.issuesNumb.text = (holder.itemView.context.getString(R.string.issues_numb, repositories.get(position).issuesNumber))
+        holder.followersNumb.text = (holder.itemView.context.getString(R.string.followers_numb, repositories.get(position).followersNumber))
+        holder.userName.text = (holder.itemView.context.getString(R.string.user_name, repositories.get(position).userInfo?.userName))
     }
 
 }
