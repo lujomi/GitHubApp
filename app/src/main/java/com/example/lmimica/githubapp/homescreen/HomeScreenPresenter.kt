@@ -30,7 +30,7 @@ class HomeScreenPresenter : HomeContract.Presenter {
 
             override fun onResponse(call: Call<RepositoriesResponse>, response: Response<RepositoriesResponse>) {
                 view?.showLogMessage("onResponse is cal")
-                view?.showList(response.body()!!.items)
+                view?.showList(response.body()!!.repositoriesList)
             }
         })
     }

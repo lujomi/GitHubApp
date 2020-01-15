@@ -1,3 +1,9 @@
 package com.example.lmimica.githubapp.model
 
-data class Repository(val name: String, val watchers: String,val forks: String, val open_issues: String,val owner: UserInfo)
+import com.google.gson.annotations.SerializedName
+
+data class Repository(@SerializedName("name") val repositoryName: String,
+                      @SerializedName("watchers") val followersNumber: String,
+                      @SerializedName("forks") val forksNumber: String,
+                      @SerializedName("open_issues") val issuesNumber: String,
+                      @SerializedName("owner") val userInfo: UserInfo)

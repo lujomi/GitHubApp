@@ -1,3 +1,5 @@
 package com.example.lmimica.githubapp.model
 
-data class RepositoriesResponse(val items: List<Repository>)
+import com.google.gson.annotations.SerializedName
+
+data class RepositoriesResponse(@SerializedName("items")val repositoriesList: List<Repository>)

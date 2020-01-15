@@ -56,14 +56,14 @@ class HomeScreenAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         Glide.with(holder.itemView.context)
-            .load(repositories.get(position).owner.avatar_url)
+            .load(repositories.get(position).userInfo.userImage)
             .into(holder.userImage)
 
-        holder.repositoryName.text = (repositories.get(position).name)
-        holder.forksNumb.text = (repositories.get(position).forks)
-        holder.issuesNumb.text = (repositories.get(position).open_issues)
-        holder.followersNumb.text = (repositories.get(position).watchers)
-        holder.userName.text = (repositories.get(position).owner.login)
+        holder.repositoryName.text = (repositories.get(position).repositoryName)
+        holder.forksNumb.text = (repositories.get(position).forksNumber)
+        holder.issuesNumb.text = (repositories.get(position).issuesNumber)
+        holder.followersNumb.text = (repositories.get(position).followersNumber)
+        holder.userName.text = (repositories.get(position).userInfo.userName)
     }
 
 }

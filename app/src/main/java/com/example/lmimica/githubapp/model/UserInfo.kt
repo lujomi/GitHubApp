@@ -1,3 +1,6 @@
 package com.example.lmimica.githubapp.model
 
-data class UserInfo(val login: String, val avatar_url: String)
+import com.google.gson.annotations.SerializedName
+
+data class UserInfo(@SerializedName("login") val userName: String,
+                    @SerializedName("avatar_url") val userImage: String)
