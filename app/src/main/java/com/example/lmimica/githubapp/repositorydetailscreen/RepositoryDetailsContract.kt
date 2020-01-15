@@ -15,7 +15,6 @@ interface RepositoryDetailsContract {
     interface Presenter{
         fun attach(view: View)
         fun detach()
-        fun repositoryReceived()
         fun showUserScreen()
         fun openRepoInWeb()
         fun setRepository(repository: Repository)

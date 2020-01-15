@@ -14,11 +14,6 @@ class RepositoryDetailsPresenter: RepositoryDetailsContract.Presenter {
         view = null
     }
 
-    override fun repositoryReceived() {
-        repository.repositoryName?.let { view!!.setRepositoryName(it) }
-        repository.programmingLanguage?.let { view!!.setProgramLnaguageName(it) }
-    }
-
     override fun showUserScreen() {
         repository.userInfo?.let { view!!.sendUserDetails(it) }
     }
@@ -29,5 +24,7 @@ class RepositoryDetailsPresenter: RepositoryDetailsContract.Presenter {
 
     override fun setRepository(repository: Repository) {
         this.repository = repository
+        repository.repositoryName?.let { view!!.setRepositoryName(it) }
+        repository.programmingLanguage?.let { view!!.setProgramLnaguageName(it) }
     }
 }

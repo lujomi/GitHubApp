@@ -21,8 +21,6 @@ class RepositoryDetailsScreen : AppCompatActivity(), RepositoryDetailsContract.V
         repoDetailsPresenter.attach(this)
         repoDetailsPresenter.setRepository(intent.extras?.getParcelable<Repository>(Constants.REPOSITIRY_KEY)!!)
 
-        repoDetailsPresenter.repositoryReceived()
-
         btn_show_user.setOnClickListener {
            repoDetailsPresenter.showUserScreen()
         }
