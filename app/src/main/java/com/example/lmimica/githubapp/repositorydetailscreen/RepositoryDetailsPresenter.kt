@@ -1,9 +1,9 @@
 package com.example.lmimica.githubapp.repositorydetailscreen
 
 import com.example.lmimica.githubapp.model.Repository
-import com.example.lmimica.githubapp.model.UserInfo
 
 class RepositoryDetailsPresenter: RepositoryDetailsContract.Presenter {
+    private lateinit var repository: Repository
     private var view: RepositoryDetailsContract.View? = null
 
     override fun attach(view: RepositoryDetailsContract.View) {
@@ -14,16 +14,20 @@ class RepositoryDetailsPresenter: RepositoryDetailsContract.Presenter {
         view = null
     }
 
-    override fun repositoryReceived(repository: Repository) {
+    override fun repositoryReceived() {
         repository.repositoryName?.let { view!!.setRepositoryName(it) }
         repository.programmingLanguage?.let { view!!.setProgramLnaguageName(it) }
     }
 
-    override fun showUserScreen(userInfo: UserInfo) {
-        view!!.sendUserDetails(userInfo)
+    override fun showUserScreen() {
+        repository.userInfo?.let { view!!.sendUserDetails(it) }
     }
 
-    override fun openRepoInWeb(repositoryUrl: String) {
-        view!!.openInWeb(repositoryUrl)
+    override fun openRepoInWeb() {
+        repository.repositoryUrl?.let { view!!.openInWeb(it) }
+    }
+
+    override fun setRepository(repository: Repository) {
+        this.repository = repository
     }
 }
