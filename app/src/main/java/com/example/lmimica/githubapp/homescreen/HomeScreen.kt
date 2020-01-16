@@ -1,8 +1,10 @@
 package com.example.lmimica.githubapp.homescreen
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.CompoundButton
 import android.widget.RadioButton
 import android.widget.RadioGroup
@@ -37,6 +39,7 @@ class HomeScreen : AppCompatActivity(), HomeContract.View, HomeScreenAdapter.Use
 
         sendQueryBtn.setOnClickListener {
             homeScreenPresenter.sendRequest(queryEditText.text.toString(), sortQuery)
+            homeScreenPresenter.setKeyboard()
         }
 
         sortGroupBtn.setOnCheckedChangeListener(this)
@@ -70,6 +73,11 @@ class HomeScreen : AppCompatActivity(), HomeContract.View, HomeScreenAdapter.Use
 
     override fun setSortButtonsVisibility() {
         sortGroupBtn.visibility = View.VISIBLE
+    }
+
+    override fun hideKeyboard() {
+        val inputMethodManager = this.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.hideSoftInputFromWindow(currentFocus?.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
     }
 
     override fun userDetailsClicked(repository: Repository) {

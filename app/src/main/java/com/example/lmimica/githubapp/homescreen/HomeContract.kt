@@ -9,6 +9,7 @@ interface HomeContract {
         fun showUsersDetailsScreen(repository: Repository)
         fun showRepositoryDetailsScreen(repository: Repository)
         fun setSortButtonsVisibility()
+        fun hideKeyboard()
     }
 
     interface Presenter {
@@ -17,5 +18,6 @@ interface HomeContract {
         fun detach()
         fun onUserDetailsClicked(repository: Repository)
         fun onRepositoryDetailsClicked(repository: Repository)
+        fun setKeyboard()
     }
 }
