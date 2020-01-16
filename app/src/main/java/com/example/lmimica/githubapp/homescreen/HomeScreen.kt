@@ -5,11 +5,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.widget.CompoundButton
-import android.widget.RadioButton
 import android.widget.RadioGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.lmimica.githubapp.Constants
 import com.example.lmimica.githubapp.model.Repository
@@ -31,8 +30,8 @@ class HomeScreen : AppCompatActivity(), HomeContract.View, HomeScreenAdapter.Use
         setContentView(R.layout.home_screen)
 
         actionBar?.hide()
-        val toolbar = findViewById(R.id.toolbar_custom) as Toolbar
-        toolbar.setBackgroundColor(resources.getColor(R.color.colorPrimary))
+        val toolbar = findViewById<Toolbar>(R.id.toolbar_custom)
+        toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.colorPrimary))
         setSupportActionBar(toolbar)
 
         homeScreenPresenter.attach(this)

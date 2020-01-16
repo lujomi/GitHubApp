@@ -1,6 +1,5 @@
 package com.example.lmimica.githubapp.homescreen
 
-import android.view.View
 import com.example.lmimica.githubapp.model.Repository
 
 interface HomeContract {

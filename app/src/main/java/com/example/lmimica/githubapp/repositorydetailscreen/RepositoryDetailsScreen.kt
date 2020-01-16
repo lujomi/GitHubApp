@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.view.View
 import com.example.lmimica.githubapp.Constants
 import com.example.lmimica.githubapp.R
-import com.example.lmimica.githubapp.model.Repository
 import com.example.lmimica.githubapp.model.UserInfo
 import com.example.lmimica.githubapp.userdetailscreen.UserDetailsScreen
 import kotlinx.android.synthetic.main.activity_repository_details_screen.*
@@ -20,7 +19,7 @@ class RepositoryDetailsScreen : AppCompatActivity(), RepositoryDetailsContract.V
         setContentView(R.layout.activity_repository_details_screen)
 
         repoDetailsPresenter.attach(this)
-        repoDetailsPresenter.setRepository(intent.extras?.getParcelable<Repository>(Constants.REPOSITIRY_KEY)!!)
+        repoDetailsPresenter.setRepository(intent.extras?.getParcelable(Constants.REPOSITIRY_KEY)!!)
 
         btnShowUser.setOnClickListener {
            repoDetailsPresenter.showUserScreen()

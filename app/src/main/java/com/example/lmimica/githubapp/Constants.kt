@@ -2,10 +2,10 @@ package com.example.lmimica.githubapp
 
 class Constants {
     companion object {
-        val REPOSITIRY_KEY = "repository"
-        val USER_INFO_KEY = "userInfo"
-        val SORT_BY_FORKS = "forks"
-        val SORT_BY_STARS = "stars"
-        val SORT_BY_UPDATES = "updates"
+        const val REPOSITIRY_KEY = "repository"
+        const val USER_INFO_KEY = "userInfo"
+        const val SORT_BY_FORKS = "forks"
+        const val SORT_BY_STARS = "stars"
+        const val SORT_BY_UPDATES = "updates"
     }
 }

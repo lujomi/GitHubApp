@@ -10,7 +10,7 @@ object ApiClient {
     private const val BASE_URL = "https://api.github.com/"
     val getClient: GithubApi by lazy {
         val interceptor = HttpLoggingInterceptor()
-        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
+        interceptor.level = HttpLoggingInterceptor.Level.BODY
         val client = OkHttpClient.Builder().addInterceptor(interceptor).build()
 
         val retrofit = Retrofit.Builder()

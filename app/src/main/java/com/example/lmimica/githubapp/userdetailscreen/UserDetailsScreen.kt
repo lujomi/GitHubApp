@@ -8,7 +8,6 @@ import android.view.View
 import com.bumptech.glide.Glide
 import com.example.lmimica.githubapp.Constants
 import com.example.lmimica.githubapp.R
-import com.example.lmimica.githubapp.model.UserInfo
 import kotlinx.android.synthetic.main.activity_user_details_screen.*
 
 class UserDetailsScreen : AppCompatActivity(), UserDetailsContract.View {
@@ -20,7 +19,7 @@ class UserDetailsScreen : AppCompatActivity(), UserDetailsContract.View {
         val userDetailsPresenter = UserDetailsPresenter()
 
         userDetailsPresenter.attach(this)
-        userDetailsPresenter.setUserInfo(intent.extras?.getParcelable<UserInfo>(Constants.USER_INFO_KEY)!!)
+        userDetailsPresenter.setUserInfo(intent.extras?.getParcelable(Constants.USER_INFO_KEY)!!)
 
         btnOpenUserWeb.setOnClickListener {
             userDetailsPresenter.openUserInWeb()
