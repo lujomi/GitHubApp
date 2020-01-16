@@ -10,6 +10,7 @@ interface RepositoryDetailsContract {
         fun setProgramLnaguageName(string: String?)
         fun sendUserDetails(user: UserInfo)
         fun openInWeb(string: String)
+        fun showWebBtn()
     }
 
     interface Presenter{

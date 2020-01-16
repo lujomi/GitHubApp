@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import com.bumptech.glide.Glide
 import com.example.lmimica.githubapp.Constants
 import com.example.lmimica.githubapp.R
@@ -45,5 +46,9 @@ class UserDetailsScreen : AppCompatActivity(), UserDetailsContract.View {
         val url = Uri.parse(string)
         val intent = Intent(Intent.ACTION_VIEW, url)
         startActivity(intent)
+    }
+
+    override fun showWebBtn() {
+        btnOpenUserWeb.visibility = View.VISIBLE
     }
 }

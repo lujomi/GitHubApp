@@ -23,6 +23,7 @@
         <Button
             android:id="@+id/btnOpenWeb"
             android:hint="@string/open_web_repo"
+            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 

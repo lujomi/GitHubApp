@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import com.example.lmimica.githubapp.Constants
 import com.example.lmimica.githubapp.R
 import com.example.lmimica.githubapp.model.Repository
@@ -47,5 +48,9 @@ class RepositoryDetailsScreen : AppCompatActivity(), RepositoryDetailsContract.V
         val url = Uri.parse(string)
         val intent = Intent(Intent.ACTION_VIEW, url)
         startActivity(intent)
+    }
+
+    override fun showWebBtn() {
+        btnOpenWeb.visibility = View.VISIBLE
     }
 }

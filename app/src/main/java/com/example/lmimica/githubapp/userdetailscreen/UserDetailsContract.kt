@@ -8,6 +8,7 @@ interface UserDetailsContract {
         fun setUserName(string: String?)
         fun setUserId(string: String?)
         fun openInWeb(string: String)
+        fun showWebBtn()
     }
     interface Presenter {
         fun attach(view: View)

@@ -26,5 +26,6 @@ class RepositoryDetailsPresenter: RepositoryDetailsContract.Presenter {
         this.repository = repository
         view!!.setRepositoryName(repository.repositoryName)
         view!!.setProgramLnaguageName(repository.programmingLanguage)
+        if(repository.repositoryUrl != null) view!!.showWebBtn()
     }
 }

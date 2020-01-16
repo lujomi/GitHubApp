@@ -19,6 +19,7 @@ class UserDetailsPresenter: UserDetailsContract.Presenter {
         view!!.setUserName(userInfo.userName)
         view!!.setUserId(userInfo.userId)
         view!!.setUserImage(userInfo.userImage)
+        if(userInfo.userUrl != null) view!!.showWebBtn()
     }
 
     override fun openUserInWeb() {
