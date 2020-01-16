@@ -22,6 +22,8 @@ class HomeScreen : AppCompatActivity(), HomeContract.View, HomeScreenAdapter.Use
     private val homeScreenPresenter =
         HomeScreenPresenter()
 
+    private var sortQuery: String = Constants.SORT_BY_FORKS
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home_screen)
@@ -34,8 +36,7 @@ class HomeScreen : AppCompatActivity(), HomeContract.View, HomeScreenAdapter.Use
         homeScreenPresenter.attach(this)
 
         sendQueryBtn.setOnClickListener {
-            homeScreenPresenter.sendRequest(queryEditText.text.toString(), Constants.SORT_BY_FORKS)
-            homeScreenPresenter.setCheckedBtn()
+            homeScreenPresenter.sendRequest(queryEditText.text.toString(), sortQuery)
         }
 
         sortGroupBtn.setOnCheckedChangeListener(this)
@@ -71,12 +72,6 @@ class HomeScreen : AppCompatActivity(), HomeContract.View, HomeScreenAdapter.Use
         sortGroupBtn.visibility = View.VISIBLE
     }
 
-    override fun checkedDefaultBtn() {
-        sortGroupBtn.setOnCheckedChangeListener(null)
-        btnSortForks.isChecked = true
-        sortGroupBtn.setOnCheckedChangeListener(this)
-    }
-
     override fun userDetailsClicked(repository: Repository) {
         homeScreenPresenter.onUserDetailsClicked(repository)
     }
@@ -88,21 +83,24 @@ class HomeScreen : AppCompatActivity(), HomeContract.View, HomeScreenAdapter.Use
     override fun onCheckedChanged(p0: RadioGroup?, checkedId: Int) {
         when {
             btnSortForks.id == checkedId -> {
+                sortQuery = Constants.SORT_BY_FORKS
                 homeScreenPresenter.sendRequest(
                     queryEditText.text.toString(),
-                    Constants.SORT_BY_FORKS
+                    sortQuery
                 )
             }
             btnSortStars.id == checkedId -> {
+                sortQuery = Constants.SORT_BY_STARS
                 homeScreenPresenter.sendRequest(
                     queryEditText.text.toString(),
-                    Constants.SORT_BY_STARS
+                    sortQuery
                 )
             }
             else -> {
+                sortQuery = Constants.SORT_BY_UPDATES
                 homeScreenPresenter.sendRequest(
                     queryEditText.text.toString(),
-                    Constants.SORT_BY_UPDATES
+                    sortQuery
                 )
             }
         }

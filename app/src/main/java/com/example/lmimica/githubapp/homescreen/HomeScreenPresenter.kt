@@ -48,8 +48,4 @@ class HomeScreenPresenter : HomeContract.Presenter {
     override fun onRepositoryDetailsClicked(repository: Repository) {
         view!!.showRepositoryDetailsScreen(repository)
     }
-
-    override fun setCheckedBtn() {
-        view!!.checkedDefaultBtn()
-    }
 }
