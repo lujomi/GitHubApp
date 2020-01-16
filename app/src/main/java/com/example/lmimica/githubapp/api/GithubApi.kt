@@ -8,6 +8,6 @@ import retrofit2.http.Query
 interface GithubApi {
 
     @GET("search/repositories")
-    fun getRepository(@Query("q") action: String): Call<RepositoriesResponse>
-    fun sortReository(@Query("sort") action: String): Call<RepositoriesResponse>
+    fun getRepository(@Query("q") action: String,
+                      @Query("sort") sort: String): Call<RepositoriesResponse>
 }

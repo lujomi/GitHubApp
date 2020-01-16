@@ -1,5 +1,6 @@
 package com.example.lmimica.githubapp.homescreen
 
+import android.view.View
 import com.example.lmimica.githubapp.model.Repository
 
 interface HomeContract {
@@ -7,11 +8,12 @@ interface HomeContract {
         fun showList(repositories: List<Repository>)
         fun showUsersDetailsScreen(repository: Repository)
         fun showRepositoryDetailsScreen(repository: Repository)
+        fun setSortButtonsVisibility()
     }
 
     interface Presenter {
         fun attach(view: View)
-        fun sendRequest(query: String)
+        fun sendRequest(query: String, sort: String)
         fun detach()
         fun onUserDetailsClicked(repository: Repository)
         fun onRepositoryDetailsClicked(repository: Repository)

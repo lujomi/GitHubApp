@@ -23,15 +23,16 @@ class HomeScreenPresenter : HomeContract.Presenter {
         this.view = view
     }
 
-    override fun sendRequest(query: String) {
-        api.getRepository(query).enqueue(object : Callback<RepositoriesResponse> {
+    override fun sendRequest(query: String, sort: String) {
+        api.getRepository(query, sort).enqueue(object : Callback<RepositoriesResponse> {
             override fun onFailure(call: Call<RepositoriesResponse>, t: Throwable) {
                Timber.d("onFailure is call $t")
             }
 
             override fun onResponse(call: Call<RepositoriesResponse>, response: Response<RepositoriesResponse>) {
                 Timber.d("Response is call")
-                view?.showList(response.body()!!.repositoriesList)
+                view!!.showList(response.body()!!.repositoriesList)
+                view!!.setSortButtonsVisibility()
             }
         })
     }
@@ -41,10 +42,10 @@ class HomeScreenPresenter : HomeContract.Presenter {
     }
 
     override fun onUserDetailsClicked(repository: Repository) {
-        view?.showUsersDetailsScreen(repository)
+        view!!.showUsersDetailsScreen(repository)
     }
 
     override fun onRepositoryDetailsClicked(repository: Repository) {
-        view?.showRepositoryDetailsScreen(repository)
+        view!!.showRepositoryDetailsScreen(repository)
     }
 }
