@@ -14,4 +14,6 @@
     <string name="show_user_detail">Show user</string>
     <string name="open_web_repo">Open in web</string>
     <string name="open_web_user">Open in web</string>
+    <string name="name_not_available">Name is not available</string>
+    <string name="number_not_available">Number is not available</string>
 </resources>

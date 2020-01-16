@@ -16,9 +16,9 @@ class UserDetailsPresenter: UserDetailsContract.Presenter {
 
     override fun setUserInfo(userInfo: UserInfo) {
         this.userInfo = userInfo
-        userInfo.userName?.let { view!!.setUserName(it) }
-        userInfo.userId?.let { view!!.setUserId(it) }
-        userInfo.userImage?.let { view!!.setUserImage(it) }
+        view!!.setUserName(userInfo.userName)
+        view!!.setUserId(userInfo.userId)
+        view!!.setUserImage(userInfo.userImage)
     }
 
     override fun openUserInWeb() {

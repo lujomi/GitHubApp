@@ -5,7 +5,6 @@ import com.example.lmimica.githubapp.model.Repository
 interface HomeContract {
     interface View {
         fun showList(repositories: List<Repository>)
-        fun showLogMessage(message: String)
         fun showUsersDetailsScreen(repository: Repository)
         fun showRepositoryDetailsScreen(repository: Repository)
     }

@@ -20,20 +20,25 @@ class UserDetailsScreen : AppCompatActivity(), UserDetailsContract.View {
 
         userDetailsPresenter.attach(this)
         userDetailsPresenter.setUserInfo(intent.extras?.getParcelable<UserInfo>(Constants.USER_INFO_KEY)!!)
+
+        btnOpenUserWeb.setOnClickListener {
+            userDetailsPresenter.openUserInWeb()
+        }
     }
 
-    override fun setUserImage(string: String) {
+    override fun setUserImage(string: String?) {
         Glide.with(this)
             .load(string)
+            .fallback(R.drawable.no_image)
             .into(userDetailsImage)
     }
 
-    override fun setUserName(string: String) {
-        userDetailsName.text = resources.getString(R.string.repo_name, string)
+    override fun setUserName(string: String?) {
+        userDetailsName.text = resources.getString(R.string.repo_name, string ?: resources.getString(R.string.name_not_available))
     }
 
-    override fun setUserId(string: String) {
-        UserDetailsId.text = resources.getString(R.string.user_id, string)
+    override fun setUserId(string: String?) {
+        UserDetailsId.text = resources.getString(R.string.user_id, string ?: resources.getString(R.string.name_not_available))
     }
 
     override fun openInWeb(string: String) {

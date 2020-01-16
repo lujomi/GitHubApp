@@ -48,10 +48,6 @@ class HomeScreen : AppCompatActivity(), HomeContract.View, HomeScreenAdapter.Use
             )
     }
 
-    override fun showLogMessage(message: String) {
-        Timber.d(message)
-    }
-
     override fun showUsersDetailsScreen(repository: Repository) {
         val intent = Intent(this,UserDetailsScreen::class.java)
         intent.putExtra(Constants.USER_INFO_KEY, repository.userInfo)

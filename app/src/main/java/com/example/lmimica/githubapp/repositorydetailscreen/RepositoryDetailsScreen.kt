@@ -29,12 +29,12 @@ class RepositoryDetailsScreen : AppCompatActivity(), RepositoryDetailsContract.V
            repoDetailsPresenter.openRepoInWeb() }
         }
 
-    override fun setRepositoryName(string: String) {
-        repository_name_screen.text = resources.getString(R.string.repo_name, string)
+    override fun setRepositoryName(string: String?) {
+        repository_name_screen.text = resources.getString(R.string.repo_name, string ?: resources.getString(R.string.name_not_available))
     }
 
-    override fun setProgramLnaguageName(string: String) {
-        programming_language_name.text = resources.getString(R.string.programming_language, string)
+    override fun setProgramLnaguageName(string: String?) {
+        programming_language_name.text = resources.getString(R.string.programming_language, string ?: resources.getString(R.string.name_not_available))
     }
 
     override fun sendUserDetails(user: UserInfo) {

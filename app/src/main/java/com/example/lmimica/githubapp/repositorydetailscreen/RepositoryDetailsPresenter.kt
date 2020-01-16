@@ -24,7 +24,7 @@ class RepositoryDetailsPresenter: RepositoryDetailsContract.Presenter {
 
     override fun setRepository(repository: Repository) {
         this.repository = repository
-        repository.repositoryName?.let { view!!.setRepositoryName(it) }
-        repository.programmingLanguage?.let { view!!.setProgramLnaguageName(it) }
+        view!!.setRepositoryName(repository.repositoryName)
+        view!!.setProgramLnaguageName(repository.programmingLanguage)
     }
 }

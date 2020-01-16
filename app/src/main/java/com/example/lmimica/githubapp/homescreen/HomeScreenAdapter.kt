@@ -57,13 +57,14 @@ class HomeScreenAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         Glide.with(holder.itemView.context)
             .load(repositories.get(position).userInfo?.userImage)
+            .fallback(R.drawable.no_image)
             .into(holder.userImage)
 
-        holder.repositoryName.text = (holder.itemView.context.getString(R.string.repo_name, repositories.get(position).repositoryName))
-        holder.forksNumb.text = (holder.itemView.context.getString(R.string.forks_numb, repositories.get(position).forksNumber))
-        holder.issuesNumb.text = (holder.itemView.context.getString(R.string.issues_numb, repositories.get(position).issuesNumber))
-        holder.followersNumb.text = (holder.itemView.context.getString(R.string.followers_numb, repositories.get(position).followersNumber))
-        holder.userName.text = (holder.itemView.context.getString(R.string.user_name, repositories.get(position).userInfo?.userName))
+        holder.repositoryName.text = (holder.itemView.context.getString(R.string.repo_name, repositories.get(position).repositoryName ?: R.string.name_not_available))
+        holder.forksNumb.text = (holder.itemView.context.getString(R.string.forks_numb, repositories.get(position).forksNumber ?: R.string.number_not_available))
+        holder.issuesNumb.text = (holder.itemView.context.getString(R.string.issues_numb, repositories.get(position).issuesNumber ?: R.string.number_not_available))
+        holder.followersNumb.text = (holder.itemView.context.getString(R.string.followers_numb, repositories.get(position).followersNumber ?: R.string.number_not_available))
+        holder.userName.text = (holder.itemView.context.getString(R.string.user_name, repositories.get(position).userInfo?.userName ?: R.string.name_not_available))
     }
 
 }

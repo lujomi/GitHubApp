@@ -8,6 +8,7 @@ import com.example.lmimica.githubapp.model.RepositoriesResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import timber.log.Timber
 
 class HomeScreenPresenter : HomeContract.Presenter {
 
@@ -25,11 +26,11 @@ class HomeScreenPresenter : HomeContract.Presenter {
     override fun sendRequest(query: String) {
         api.getRepository(query).enqueue(object : Callback<RepositoriesResponse> {
             override fun onFailure(call: Call<RepositoriesResponse>, t: Throwable) {
-                view?.showLogMessage("Error in onFailure $t")
+               Timber.d("onFailure is call $t")
             }
 
             override fun onResponse(call: Call<RepositoriesResponse>, response: Response<RepositoriesResponse>) {
-                view?.showLogMessage("onResponse is cal")
+                Timber.d("Response is call")
                 view?.showList(response.body()!!.repositoriesList)
             }
         })
