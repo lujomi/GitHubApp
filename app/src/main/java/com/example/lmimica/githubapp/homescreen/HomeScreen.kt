@@ -32,6 +32,7 @@ class HomeScreen : AppCompatActivity(), HomeContract.View, HomeScreenAdapter.Use
 
         sendQueryBtn.setOnClickListener {
             homeScreenPresenter.sendRequest(queryEditText.text.toString(), Constants.SORT_BY_FORKS)
+            homeScreenPresenter.setCheckedBtn()
         }
 
         sortGroupBtn.setOnCheckedChangeListener { radioGroup, checkedId ->
@@ -76,9 +77,11 @@ class HomeScreen : AppCompatActivity(), HomeContract.View, HomeScreenAdapter.Use
     }
 
     override fun setSortButtonsVisibility() {
-        btnSortForks.visibility = View.VISIBLE
-        btnSortStars.visibility = View.VISIBLE
-        btnSortUpdated.visibility = View.VISIBLE
+        sortGroupBtn.visibility = View.VISIBLE
+    }
+
+    override fun checkedDefaultBtn() {
+        if (sortGroupBtn.visibility == View.VISIBLE) btnSortForks.isChecked = true
     }
 
     override fun userDetailsClicked(repository: Repository) {

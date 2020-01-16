@@ -49,25 +49,23 @@
         <RadioGroup
             android:id="@+id/sortGroupBtn"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:visibility="gone">
         <RadioButton
             android:id="@+id/btnSortStars"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:visibility="gone"
             android:text="@string/btn_sort_by_stars"/>
         <RadioButton
             android:id="@+id/btnSortForks"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:checked="true"
-            android:visibility="gone"
             android:text="@string/btn_sort_by_forks"/>
         <RadioButton
             android:id="@+id/btnSortUpdated"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:visibility="gone"
             android:text="@string/btn_sort_by_updated"/>
         </RadioGroup>
     </LinearLayout>
