@@ -11,7 +11,6 @@ import com.example.lmimica.githubapp.R
 import com.example.lmimica.githubapp.repositorydetailscreen.RepositoryDetailsScreen
 import com.example.lmimica.githubapp.userdetailscreen.UserDetailsScreen
 import kotlinx.android.synthetic.main.home_screen.*
-import timber.log.Timber
 
 class HomeScreen : AppCompatActivity(), HomeContract.View, HomeScreenAdapter.UserClickListener {
 
@@ -29,8 +28,8 @@ class HomeScreen : AppCompatActivity(), HomeContract.View, HomeScreenAdapter.Use
 
         homeScreenPresenter.attach(this)
 
-        send_query_btn.setOnClickListener {
-            homeScreenPresenter.sendRequest(query_edit_text.text.toString())
+        sendQueryBtn.setOnClickListener {
+            homeScreenPresenter.sendRequest(queryEditText.text.toString())
         }
     }
 
@@ -40,8 +39,8 @@ class HomeScreen : AppCompatActivity(), HomeContract.View, HomeScreenAdapter.Use
     }
 
     override fun showList(repositories: List<Repository>) {
-        recycler_view.layoutManager = LinearLayoutManager(this)
-        recycler_view.adapter =
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter =
             HomeScreenAdapter(
                 repositories,
                 this@HomeScreen

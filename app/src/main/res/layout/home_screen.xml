@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <EditText
-            android:id="@+id/query_edit_text"
+            android:id="@+id/queryEditText"
             android:layout_width="150dp"
             android:layout_height="40dp"
             android:layout_alignParentTop="true"
@@ -23,7 +23,7 @@
             android:textSize="18sp" />
 
         <ImageButton
-            android:id="@+id/send_query_btn"
+            android:id="@+id/sendQueryBtn"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_alignParentTop="true"
@@ -34,30 +34,30 @@
     </androidx.appcompat.widget.Toolbar>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view"
+        android:id="@+id/recyclerView"
         android:layout_below="@id/toolbar_custom"
-        android:layout_above="@id/btn_container"
+        android:layout_above="@id/btnContainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
     <LinearLayout
-        android:id="@+id/btn_container"
+        android:id="@+id/btnContainer"
         android:layout_alignParentBottom="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <Button
-            android:id="@+id/btn_sort_stars"
+            android:id="@+id/btnSortStars"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/btn_sort_by_stars"/>
         <Button
-            android:id="@+id/btn_sort_forks"
+            android:id="@+id/btnSortForks"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/btn_sort_by_forks"/>
         <Button
-            android:id="@+id/btn_sort_updated"
+            android:id="@+id/btnSortUpdated"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/btn_sort_by_updated"/>

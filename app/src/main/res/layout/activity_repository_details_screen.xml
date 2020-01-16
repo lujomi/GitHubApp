@@ -6,22 +6,22 @@
 
 
         <TextView
-            android:id="@+id/repository_name_screen"
+            android:id="@+id/repositoryNameScreen"
             android:hint="@string/repo_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
-            android:id="@+id/programming_language_name"
+            android:id="@+id/programmingLanguageName"
             android:hint="@string/programming_language"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <Button
-            android:id="@+id/btn_show_user"
+            android:id="@+id/btnShowUser"
             android:hint="@string/show_user_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <Button
-            android:id="@+id/btn_open_web"
+            android:id="@+id/btnOpenWeb"
             android:hint="@string/open_web_repo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />

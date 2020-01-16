@@ -22,12 +22,12 @@ class HomeScreenAdapter(
     }
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val userName = view.findViewById<TextView>(R.id.user_name)
+        val userName = view.findViewById<TextView>(R.id.userName)
         val userImage = view.findViewById<ImageView>(R.id.user_image)
-        val repositoryName = view.findViewById<TextView>(R.id.repository_name)
-        val followersNumb = view.findViewById<TextView>(R.id.followers_numb)
-        val forksNumb = view.findViewById<TextView>(R.id.forks_numb)
-        val issuesNumb = view.findViewById<TextView>(R.id.issues_numb)
+        val repositoryName = view.findViewById<TextView>(R.id.repositoryName)
+        val followersNumb = view.findViewById<TextView>(R.id.followersNumb)
+        val forksNumb = view.findViewById<TextView>(R.id.forksNumb)
+        val issuesNumb = view.findViewById<TextView>(R.id.issuesNumb)
         val userInfoContainer = view.findViewById<LinearLayout>(R.id.user_info_container)
 
         init {

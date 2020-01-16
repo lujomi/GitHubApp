@@ -21,20 +21,20 @@ class RepositoryDetailsScreen : AppCompatActivity(), RepositoryDetailsContract.V
         repoDetailsPresenter.attach(this)
         repoDetailsPresenter.setRepository(intent.extras?.getParcelable<Repository>(Constants.REPOSITIRY_KEY)!!)
 
-        btn_show_user.setOnClickListener {
+        btnShowUser.setOnClickListener {
            repoDetailsPresenter.showUserScreen()
         }
 
-        btn_open_web.setOnClickListener {
+        btnOpenWeb.setOnClickListener {
            repoDetailsPresenter.openRepoInWeb() }
         }
 
     override fun setRepositoryName(string: String?) {
-        repository_name_screen.text = resources.getString(R.string.repo_name, string ?: resources.getString(R.string.name_not_available))
+        repositoryNameScreen.text = resources.getString(R.string.repo_name, string ?: resources.getString(R.string.name_not_available))
     }
 
     override fun setProgramLnaguageName(string: String?) {
-        programming_language_name.text = resources.getString(R.string.programming_language, string ?: resources.getString(R.string.name_not_available))
+        programmingLanguageName.text = resources.getString(R.string.programming_language, string ?: resources.getString(R.string.name_not_available))
     }
 
     override fun sendUserDetails(user: UserInfo) {
