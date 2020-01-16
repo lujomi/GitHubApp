@@ -35,12 +35,16 @@ class HomeScreen : AppCompatActivity(), HomeContract.View, HomeScreenAdapter.Use
         }
 
         sortGroupBtn.setOnCheckedChangeListener { radioGroup, checkedId ->
-            if(btnSortForks.id == checkedId){
-                homeScreenPresenter.sendRequest(queryEditText.text.toString(), Constants.SORT_BY_FORKS)
-            } else if(btnSortStars.id == checkedId) {
-                homeScreenPresenter.sendRequest(queryEditText.text.toString(), Constants.SORT_BY_STARS)
-            } else {
-                homeScreenPresenter.sendRequest(queryEditText.text.toString(), Constants.SORT_BY_UPDATES)
+            when {
+                btnSortForks.id == checkedId -> {
+                    homeScreenPresenter.sendRequest(queryEditText.text.toString(), Constants.SORT_BY_FORKS)
+                }
+                btnSortStars.id == checkedId -> {
+                    homeScreenPresenter.sendRequest(queryEditText.text.toString(), Constants.SORT_BY_STARS)
+                }
+                else -> {
+                    homeScreenPresenter.sendRequest(queryEditText.text.toString(), Constants.SORT_BY_UPDATES)
+                }
             }
         }
     }
