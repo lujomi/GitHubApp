@@ -3,7 +3,9 @@ package com.example.lmimica.githubapp.homescreen
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.CompoundButton
 import android.widget.RadioButton
+import android.widget.RadioGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,7 +16,8 @@ import com.example.lmimica.githubapp.repositorydetailscreen.RepositoryDetailsScr
 import com.example.lmimica.githubapp.userdetailscreen.UserDetailsScreen
 import kotlinx.android.synthetic.main.home_screen.*
 
-class HomeScreen : AppCompatActivity(), HomeContract.View, HomeScreenAdapter.UserClickListener {
+class HomeScreen : AppCompatActivity(), HomeContract.View, HomeScreenAdapter.UserClickListener,
+    RadioGroup.OnCheckedChangeListener {
 
     private val homeScreenPresenter =
         HomeScreenPresenter()
@@ -35,19 +38,7 @@ class HomeScreen : AppCompatActivity(), HomeContract.View, HomeScreenAdapter.Use
             homeScreenPresenter.setCheckedBtn()
         }
 
-        sortGroupBtn.setOnCheckedChangeListener { radioGroup, checkedId ->
-            when {
-                btnSortForks.id == checkedId -> {
-                    homeScreenPresenter.sendRequest(queryEditText.text.toString(), Constants.SORT_BY_FORKS)
-                }
-                btnSortStars.id == checkedId -> {
-                    homeScreenPresenter.sendRequest(queryEditText.text.toString(), Constants.SORT_BY_STARS)
-                }
-                else -> {
-                    homeScreenPresenter.sendRequest(queryEditText.text.toString(), Constants.SORT_BY_UPDATES)
-                }
-            }
-        }
+        sortGroupBtn.setOnCheckedChangeListener(this)
     }
 
     override fun onDestroy() {
@@ -60,7 +51,7 @@ class HomeScreen : AppCompatActivity(), HomeContract.View, HomeScreenAdapter.Use
         recyclerView.adapter =
             HomeScreenAdapter(
                 repositories,
-                this@HomeScreen
+                this
             )
     }
 
@@ -81,7 +72,9 @@ class HomeScreen : AppCompatActivity(), HomeContract.View, HomeScreenAdapter.Use
     }
 
     override fun checkedDefaultBtn() {
-        if (sortGroupBtn.visibility == View.VISIBLE) btnSortForks.isChecked = true
+        sortGroupBtn.setOnCheckedChangeListener(null)
+        btnSortForks.isChecked = true
+        sortGroupBtn.setOnCheckedChangeListener(this)
     }
 
     override fun userDetailsClicked(repository: Repository) {
@@ -90,5 +83,28 @@ class HomeScreen : AppCompatActivity(), HomeContract.View, HomeScreenAdapter.Use
 
     override fun repoositoryDetailsClicked(repository: Repository) {
         homeScreenPresenter.onRepositoryDetailsClicked(repository)
+    }
+
+    override fun onCheckedChanged(p0: RadioGroup?, checkedId: Int) {
+        when {
+            btnSortForks.id == checkedId -> {
+                homeScreenPresenter.sendRequest(
+                    queryEditText.text.toString(),
+                    Constants.SORT_BY_FORKS
+                )
+            }
+            btnSortStars.id == checkedId -> {
+                homeScreenPresenter.sendRequest(
+                    queryEditText.text.toString(),
+                    Constants.SORT_BY_STARS
+                )
+            }
+            else -> {
+                homeScreenPresenter.sendRequest(
+                    queryEditText.text.toString(),
+                    Constants.SORT_BY_UPDATES
+                )
+            }
+        }
     }
 }
