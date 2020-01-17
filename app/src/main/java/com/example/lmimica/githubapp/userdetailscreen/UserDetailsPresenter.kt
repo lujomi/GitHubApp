@@ -2,13 +2,8 @@ package com.example.lmimica.githubapp.userdetailscreen
 
 import com.example.lmimica.githubapp.model.UserInfo
 
-class UserDetailsPresenter: UserDetailsContract.Presenter {
+class UserDetailsPresenter(private var view: UserDetailsContract.View?): UserDetailsContract.Presenter {
     private lateinit var userInfo: UserInfo
-    private var view: UserDetailsContract.View? = null
-
-    override fun attach(view: UserDetailsContract.View) {
-        this.view = view
-    }
 
     override fun detach() {
        view = null

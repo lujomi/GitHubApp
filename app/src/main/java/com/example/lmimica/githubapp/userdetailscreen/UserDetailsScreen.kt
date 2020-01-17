@@ -9,6 +9,8 @@ import com.bumptech.glide.Glide
 import com.example.lmimica.githubapp.Constants
 import com.example.lmimica.githubapp.R
 import kotlinx.android.synthetic.main.activity_user_details_screen.*
+import org.koin.android.ext.android.inject
+import org.koin.core.parameter.parametersOf
 
 class UserDetailsScreen : AppCompatActivity(), UserDetailsContract.View {
 
@@ -16,9 +18,8 @@ class UserDetailsScreen : AppCompatActivity(), UserDetailsContract.View {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_details_screen)
 
-        val userDetailsPresenter = UserDetailsPresenter()
+        val userDetailsPresenter: UserDetailsPresenter by inject {(parametersOf(this))}
 
-        userDetailsPresenter.attach(this)
         userDetailsPresenter.setUserInfo(intent.extras?.getParcelable(Constants.USER_INFO_KEY)!!)
 
         btnOpenUserWeb.setOnClickListener {

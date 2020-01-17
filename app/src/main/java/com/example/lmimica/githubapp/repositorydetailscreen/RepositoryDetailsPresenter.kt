@@ -2,13 +2,8 @@ package com.example.lmimica.githubapp.repositorydetailscreen
 
 import com.example.lmimica.githubapp.model.Repository
 
-class RepositoryDetailsPresenter: RepositoryDetailsContract.Presenter {
+class RepositoryDetailsPresenter(private var view: RepositoryDetailsContract.View?): RepositoryDetailsContract.Presenter {
     private lateinit var repository: Repository
-    private var view: RepositoryDetailsContract.View? = null
-
-    override fun attach(view: RepositoryDetailsContract.View) {
-        this.view = view
-    }
 
     override fun detach() {
         view = null
