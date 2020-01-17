@@ -47,6 +47,14 @@ class HomeActivity : AppCompatActivity(), HomeContract.View, HomeActivityAdapter
         super.onDestroy()
     }
 
+    override fun showProgress() {
+        progressBar.visibility = View.VISIBLE
+    }
+
+    override fun hideProgress() {
+        progressBar.visibility = View.GONE
+    }
+
     override fun showList(repositories: List<Repository>) {
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter =

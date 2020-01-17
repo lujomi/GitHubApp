@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.lmimica.githubapp.model.Repository
 import com.example.lmimica.githubapp.R
+import kotlinx.android.synthetic.main.user_item.view.*
 
 class HomeActivityAdapter(
     val repositories: List<Repository>,
@@ -22,13 +23,13 @@ class HomeActivityAdapter(
     }
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val userName: TextView = view.findViewById(R.id.userName)
-        val userImage: ImageView = view.findViewById(R.id.user_image)
-        val repositoryName: TextView = view.findViewById(R.id.repositoryName)
-        val followersNumb: TextView = view.findViewById(R.id.followersNumb)
-        val forksNumb: TextView = view.findViewById(R.id.forksNumb)
-        val issuesNumb: TextView = view.findViewById(R.id.issuesNumb)
-        private val userInfoContainer: LinearLayout = view.findViewById(R.id.user_info_container)
+        val userName: TextView = view.userName
+        val userImage: ImageView = view.user_image
+        val repositoryName: TextView = view.repositoryName
+        val followersNumb: TextView = view.followersNumb
+        val forksNumb: TextView = view.forksNumb
+        val issuesNumb: TextView = view.issuesNumb
+        private val userInfoContainer: LinearLayout = view.user_info_container
 
         init {
             userImage.setOnClickListener {

@@ -19,13 +19,16 @@ class HomeActivityPresenter(private var view: HomeContract.View?) : HomeContract
     }
 
     override fun sendRequest(query: String, sort: String) {
+        view?.showProgress()
         api.getRepository(query, sort).enqueue(object : Callback<RepositoriesResponse> {
             override fun onFailure(call: Call<RepositoriesResponse>, t: Throwable) {
+                view?.hideProgress()
                Timber.d("onFailure is call $t")
             }
 
             override fun onResponse(call: Call<RepositoriesResponse>, response: Response<RepositoriesResponse>) {
                 Timber.d("Response is call")
+                view?.hideProgress()
                 view?.showList(response.body()!!.repositoriesList)
                 view?.setSortButtonsVisibility()
             }
