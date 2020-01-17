@@ -1,4 +1,4 @@
-package com.example.lmimica.githubapp.homescreen
+package com.example.lmimica.githubapp.homeactivity
 
 import com.example.lmimica.githubapp.model.Repository
 import com.example.lmimica.githubapp.api.ApiClient
@@ -10,7 +10,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import timber.log.Timber
 
-class HomeScreenPresenter(private var view: HomeContract.View?) : HomeContract.Presenter {
+class HomeActivityPresenter(private var view: HomeContract.View?) : HomeContract.Presenter {
 
     private var api: GithubApi
 
@@ -26,8 +26,8 @@ class HomeScreenPresenter(private var view: HomeContract.View?) : HomeContract.P
 
             override fun onResponse(call: Call<RepositoriesResponse>, response: Response<RepositoriesResponse>) {
                 Timber.d("Response is call")
-                view!!.showList(response.body()!!.repositoriesList)
-                view!!.setSortButtonsVisibility()
+                view?.showList(response.body()!!.repositoriesList)
+                view?.setSortButtonsVisibility()
             }
         })
     }
@@ -37,14 +37,14 @@ class HomeScreenPresenter(private var view: HomeContract.View?) : HomeContract.P
     }
 
     override fun onUserDetailsClicked(repository: Repository) {
-        view!!.showUsersDetailsScreen(repository)
+        view?.showUsersDetailsScreen(repository)
     }
 
     override fun onRepositoryDetailsClicked(repository: Repository) {
-        view!!.showRepositoryDetailsScreen(repository)
+        view?.showRepositoryDetailsScreen(repository)
     }
 
     override fun setKeyboard() {
-        view!!.hideKeyboard()
+        view?.hideKeyboard()
     }
 }

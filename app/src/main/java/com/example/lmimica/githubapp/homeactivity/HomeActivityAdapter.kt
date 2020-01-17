@@ -1,4 +1,4 @@
-package com.example.lmimica.githubapp.homescreen
+package com.example.lmimica.githubapp.homeactivity
 
 import android.view.LayoutInflater
 import android.view.View
@@ -11,10 +11,10 @@ import com.bumptech.glide.Glide
 import com.example.lmimica.githubapp.model.Repository
 import com.example.lmimica.githubapp.R
 
-class HomeScreenAdapter(
+class HomeActivityAdapter(
     val repositories: List<Repository>,
     val listener: UserClickListener
-) : RecyclerView.Adapter<HomeScreenAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<HomeActivityAdapter.ViewHolder>() {
 
     interface UserClickListener {
         fun userDetailsClicked(repository: Repository)

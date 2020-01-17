@@ -1,4 +1,4 @@
-package com.example.lmimica.githubapp.homescreen
+package com.example.lmimica.githubapp.homeactivity
 
 import com.example.lmimica.githubapp.model.Repository
 

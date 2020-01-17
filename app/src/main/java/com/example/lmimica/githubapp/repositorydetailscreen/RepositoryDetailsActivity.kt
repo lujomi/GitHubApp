@@ -8,17 +8,17 @@ import android.view.View
 import com.example.lmimica.githubapp.Constants
 import com.example.lmimica.githubapp.R
 import com.example.lmimica.githubapp.model.UserInfo
-import com.example.lmimica.githubapp.userdetailscreen.UserDetailsScreen
-import kotlinx.android.synthetic.main.activity_repository_details_screen.*
+import com.example.lmimica.githubapp.userdetailscreen.UserDetailsActivity
+import kotlinx.android.synthetic.main.repository_details_activity.*
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 
-class RepositoryDetailsScreen : AppCompatActivity(), RepositoryDetailsContract.View {
+class RepositoryDetailsActivity : AppCompatActivity(), RepositoryDetailsContract.View {
     private val repoDetailsPresenter: RepositoryDetailsPresenter by inject {(parametersOf(this)) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_repository_details_screen)
+        setContentView(R.layout.repository_details_activity)
 
         repoDetailsPresenter.setRepository(intent.extras?.getParcelable(Constants.REPOSITIRY_KEY)!!)
 
@@ -39,7 +39,7 @@ class RepositoryDetailsScreen : AppCompatActivity(), RepositoryDetailsContract.V
     }
 
     override fun sendUserDetails(user: UserInfo) {
-        val intent = Intent(this, UserDetailsScreen::class.java)
+        val intent = Intent(this, UserDetailsActivity::class.java)
         intent.putExtra(Constants.USER_INFO_KEY, user)
         startActivity(intent)
     }
