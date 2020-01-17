@@ -1,4 +1,4 @@
-package com.example.lmimica.githubapp.repositorydetailscreen
+package com.example.lmimica.githubapp.presentation.repositorydetailscreen
 
 import com.example.lmimica.githubapp.model.Repository
 

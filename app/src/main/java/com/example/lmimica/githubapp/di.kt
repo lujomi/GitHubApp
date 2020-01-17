@@ -1,11 +1,11 @@
 package com.example.lmimica.githubapp
 
-import com.example.lmimica.githubapp.homeactivity.HomeContract
-import com.example.lmimica.githubapp.homeactivity.HomeActivityPresenter
-import com.example.lmimica.githubapp.repositorydetailscreen.RepositoryDetailsContract
-import com.example.lmimica.githubapp.repositorydetailscreen.RepositoryDetailsPresenter
-import com.example.lmimica.githubapp.userdetailscreen.UserDetailsContract
-import com.example.lmimica.githubapp.userdetailscreen.UserDetailsPresenter
+import com.example.lmimica.githubapp.presentation.homeactivity.HomeContract
+import com.example.lmimica.githubapp.presentation.homeactivity.HomeActivityPresenter
+import com.example.lmimica.githubapp.presentation.repositorydetailscreen.RepositoryDetailsContract
+import com.example.lmimica.githubapp.presentation.repositorydetailscreen.RepositoryDetailsPresenter
+import com.example.lmimica.githubapp.presentation.userdetailscreen.UserDetailsContract
+import com.example.lmimica.githubapp.presentation.userdetailscreen.UserDetailsPresenter
 import org.koin.dsl.module
 
 val presenterModule = module {

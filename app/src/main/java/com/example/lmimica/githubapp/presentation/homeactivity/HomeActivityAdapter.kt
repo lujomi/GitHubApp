@@ -1,4 +1,4 @@
-package com.example.lmimica.githubapp.homeactivity
+package com.example.lmimica.githubapp.presentation.homeactivity
 
 import android.view.LayoutInflater
 import android.view.View

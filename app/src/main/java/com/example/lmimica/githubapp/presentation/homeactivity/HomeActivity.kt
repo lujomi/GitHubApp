@@ -1,4 +1,4 @@
-package com.example.lmimica.githubapp.homeactivity
+package com.example.lmimica.githubapp.presentation.homeactivity
 
 import android.content.Context
 import android.content.Intent
@@ -7,14 +7,13 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.RadioGroup
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.lmimica.githubapp.Constants
 import com.example.lmimica.githubapp.model.Repository
 import com.example.lmimica.githubapp.R
-import com.example.lmimica.githubapp.repositorydetailscreen.RepositoryDetailsActivity
-import com.example.lmimica.githubapp.userdetailscreen.UserDetailsActivity
+import com.example.lmimica.githubapp.presentation.repositorydetailscreen.RepositoryDetailsActivity
+import com.example.lmimica.githubapp.presentation.userdetailscreen.UserDetailsActivity
 import kotlinx.android.synthetic.main.home_activity.*
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf

@@ -1,4 +1,4 @@
-package com.example.lmimica.githubapp.repositorydetailscreen
+package com.example.lmimica.githubapp.presentation.repositorydetailscreen
 
 import android.content.Intent
 import android.net.Uri
@@ -8,7 +8,7 @@ import android.view.View
 import com.example.lmimica.githubapp.Constants
 import com.example.lmimica.githubapp.R
 import com.example.lmimica.githubapp.model.UserInfo
-import com.example.lmimica.githubapp.userdetailscreen.UserDetailsActivity
+import com.example.lmimica.githubapp.presentation.userdetailscreen.UserDetailsActivity
 import kotlinx.android.synthetic.main.repository_details_activity.*
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf

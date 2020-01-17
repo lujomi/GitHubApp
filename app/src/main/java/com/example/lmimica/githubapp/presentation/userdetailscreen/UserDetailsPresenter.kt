@@ -1,4 +1,4 @@
-package com.example.lmimica.githubapp.userdetailscreen
+package com.example.lmimica.githubapp.presentation.userdetailscreen
 
 import com.example.lmimica.githubapp.model.UserInfo
 

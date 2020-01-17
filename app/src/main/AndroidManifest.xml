@@ -13,13 +13,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".repositorydetailscreen.RepositoryDetailsActivity"
+            android:name="com.example.lmimica.githubapp.presentation.repositorydetailscreen.RepositoryDetailsActivity"
             android:screenOrientation="portrait"></activity>
         <activity
-            android:name=".userdetailscreen.UserDetailsActivity"
+            android:name="com.example.lmimica.githubapp.presentation.userdetailscreen.UserDetailsActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".homeactivity.HomeActivity"
+            android:name="com.example.lmimica.githubapp.presentation.homeactivity.HomeActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
