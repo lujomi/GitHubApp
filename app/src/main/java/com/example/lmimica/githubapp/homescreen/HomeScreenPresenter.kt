@@ -10,17 +10,12 @@ import retrofit2.Callback
 import retrofit2.Response
 import timber.log.Timber
 
-class HomeScreenPresenter : HomeContract.Presenter {
+class HomeScreenPresenter(private var view: HomeContract.View?) : HomeContract.Presenter {
 
-    private var view: HomeContract.View? = null
     private var api: GithubApi
 
     init {
         api = ApiClient.getClient
-    }
-
-    override fun attach(view: HomeContract.View) {
-        this.view = view
     }
 
     override fun sendRequest(query: String, sort: String) {

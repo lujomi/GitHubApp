@@ -11,7 +11,6 @@ interface UserDetailsContract {
         fun showWebBtn()
     }
     interface Presenter {
-        fun attach(view: View)
         fun detach()
         fun setUserInfo(userInfo: UserInfo)
         fun openUserInWeb()

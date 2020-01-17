@@ -12,7 +12,6 @@ interface HomeContract {
     }
 
     interface Presenter {
-        fun attach(view: View)
         fun sendRequest(query: String, sort: String)
         fun detach()
         fun onUserDetailsClicked(repository: Repository)

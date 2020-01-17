@@ -16,12 +16,13 @@ import com.example.lmimica.githubapp.R
 import com.example.lmimica.githubapp.repositorydetailscreen.RepositoryDetailsScreen
 import com.example.lmimica.githubapp.userdetailscreen.UserDetailsScreen
 import kotlinx.android.synthetic.main.home_screen.*
+import org.koin.android.ext.android.inject
+import org.koin.core.parameter.parametersOf
 
 class HomeScreen : AppCompatActivity(), HomeContract.View, HomeScreenAdapter.UserClickListener,
     RadioGroup.OnCheckedChangeListener {
 
-    private val homeScreenPresenter =
-        HomeScreenPresenter()
+    private val homeScreenPresenter: HomeScreenPresenter by inject{(parametersOf(this))}
 
     private var sortQuery: String = Constants.SORT_BY_FORKS
 
@@ -33,8 +34,6 @@ class HomeScreen : AppCompatActivity(), HomeContract.View, HomeScreenAdapter.Use
         val toolbar = findViewById<Toolbar>(R.id.toolbar_custom)
         toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.colorPrimary))
         setSupportActionBar(toolbar)
-
-        homeScreenPresenter.attach(this)
 
         sendQueryBtn.setOnClickListener {
             homeScreenPresenter.sendRequest(queryEditText.text.toString(), sortQuery)

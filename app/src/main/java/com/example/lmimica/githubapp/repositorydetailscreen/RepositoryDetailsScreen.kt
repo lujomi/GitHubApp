@@ -10,15 +10,16 @@ import com.example.lmimica.githubapp.R
 import com.example.lmimica.githubapp.model.UserInfo
 import com.example.lmimica.githubapp.userdetailscreen.UserDetailsScreen
 import kotlinx.android.synthetic.main.activity_repository_details_screen.*
+import org.koin.android.ext.android.inject
+import org.koin.core.parameter.parametersOf
 
 class RepositoryDetailsScreen : AppCompatActivity(), RepositoryDetailsContract.View {
-    private val repoDetailsPresenter = RepositoryDetailsPresenter()
+    private val repoDetailsPresenter: RepositoryDetailsPresenter by inject {(parametersOf(this)) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_repository_details_screen)
 
-        repoDetailsPresenter.attach(this)
         repoDetailsPresenter.setRepository(intent.extras?.getParcelable(Constants.REPOSITIRY_KEY)!!)
 
         btnShowUser.setOnClickListener {
