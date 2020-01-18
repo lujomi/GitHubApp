@@ -17,7 +17,6 @@ interface RepositoryDetailsContract {
     }
 
     interface Presenter{
-        fun formatDate(date: Date?): String
         fun detach()
         fun showUserScreen()
         fun openRepoInWeb()

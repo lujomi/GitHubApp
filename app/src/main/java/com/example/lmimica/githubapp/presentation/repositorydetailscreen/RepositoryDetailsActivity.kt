@@ -46,7 +46,7 @@ class RepositoryDetailsActivity : AppCompatActivity(), RepositoryDetailsContract
 
     override fun setRepositoryUpdatedDate(string: String) {
         var text = string
-        if("".equals(text)) text = resources.getString(R.string.unknown_date)
+        if(text.isEmpty()) text = resources.getString(R.string.unknown_date)
         updatedDate.text = resources.getString(R.string.updated_date, text)
     }
 
