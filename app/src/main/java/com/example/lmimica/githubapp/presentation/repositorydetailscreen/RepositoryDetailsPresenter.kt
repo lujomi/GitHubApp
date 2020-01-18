@@ -8,11 +8,11 @@ class RepositoryDetailsPresenter(private var view: RepositoryDetailsContract.Vie
     private lateinit var repository: Repository
 
 
-    override fun formatDate(date: Date?, string: String): String {
+    override fun formatDate(date: Date?): String {
         if (date != null){
             val simpleDateFormat = SimpleDateFormat.getDateInstance()
             return simpleDateFormat.format(date)
-        } else return string
+        } else return ""
     }
 
     override fun detach() {
@@ -29,10 +29,12 @@ class RepositoryDetailsPresenter(private var view: RepositoryDetailsContract.Vie
 
     override fun setRepository(repository: Repository) {
         this.repository = repository
+        val createdDate: String = formatDate(repository.createdDate)
+        val updatedDate: String = formatDate(repository.updateDate)
         view?.setRepositoryName(repository.repositoryName)
         view?.setProgramLnaguageName(repository.programmingLanguage)
-        view?.setRepositoryCreatedDate(repository.createdDate)
-        view?.setRepositoryUpdatedDate(repository.updateDate)
+        view?.setRepositoryCreatedDate(createdDate)
+        view?.setRepositoryUpdatedDate(updatedDate)
         if(repository.repositoryUrl != null) view?.showWebBtn()
     }
 }

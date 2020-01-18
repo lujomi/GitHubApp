@@ -12,8 +12,6 @@ import com.example.lmimica.githubapp.presentation.userdetailscreen.UserDetailsAc
 import kotlinx.android.synthetic.main.repository_details_activity.*
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
-import java.util.*
-
 
 class RepositoryDetailsActivity : AppCompatActivity(), RepositoryDetailsContract.View {
     private val repoDetailsPresenter: RepositoryDetailsPresenter by inject {(parametersOf(this)) }
@@ -40,14 +38,16 @@ class RepositoryDetailsActivity : AppCompatActivity(), RepositoryDetailsContract
         programmingLanguageName.text = resources.getString(R.string.programming_language, string ?: resources.getString(R.string.info_not_available))
     }
 
-    override fun setRepositoryCreatedDate(date: Date?) {
-        createdDate.text = resources.getString(R.string.created_date,
-            repoDetailsPresenter.formatDate(date, resources.getString(R.string.unknown_date)))
+    override fun setRepositoryCreatedDate(string: String) {
+        var text = string
+        if ("".equals(text)) text = resources.getString(R.string.unknown_date)
+        createdDate.text = resources.getString(R.string.created_date, text)
     }
 
-    override fun setRepositoryUpdatedDate(date: Date?) {
-        updatedDate.text = resources.getString(R.string.updated_date,
-            repoDetailsPresenter.formatDate(date, resources.getString(R.string.unknown_date)))
+    override fun setRepositoryUpdatedDate(string: String) {
+        var text = string
+        if("".equals(text)) text = resources.getString(R.string.unknown_date)
+        updatedDate.text = resources.getString(R.string.updated_date, text)
     }
 
     override fun sendUserDetails(user: UserInfo) {

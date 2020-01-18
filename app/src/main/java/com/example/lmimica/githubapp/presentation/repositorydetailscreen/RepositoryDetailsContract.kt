@@ -9,15 +9,15 @@ interface RepositoryDetailsContract {
     interface View {
         fun setRepositoryName(string: String?)
         fun setProgramLnaguageName(string: String?)
-        fun setRepositoryCreatedDate(date: Date?)
-        fun setRepositoryUpdatedDate(date: Date?)
+        fun setRepositoryCreatedDate(string: String)
+        fun setRepositoryUpdatedDate(string: String)
         fun sendUserDetails(user: UserInfo)
         fun openInWeb(string: String)
         fun showWebBtn()
     }
 
     interface Presenter{
-        fun formatDate(date: Date?, string: String): String
+        fun formatDate(date: Date?): String
         fun detach()
         fun showUserScreen()
         fun openRepoInWeb()
