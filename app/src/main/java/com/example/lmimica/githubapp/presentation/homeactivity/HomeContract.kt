@@ -18,6 +18,5 @@ interface HomeContract {
         fun detach()
         fun onUserDetailsClicked(repository: Repository)
         fun onRepositoryDetailsClicked(repository: Repository)
-        fun setKeyboard()
     }
 }

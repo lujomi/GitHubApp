@@ -35,7 +35,6 @@ class HomeActivity : AppCompatActivity(), HomeContract.View, HomeActivityAdapter
 
         sendQueryBtn.setOnClickListener {
             homeActivityPresenter.sendRequest(queryEditText.text.toString(), sortQuery)
-            homeActivityPresenter.setKeyboard()
         }
 
         sortGroupBtn.setOnCheckedChangeListener(this)

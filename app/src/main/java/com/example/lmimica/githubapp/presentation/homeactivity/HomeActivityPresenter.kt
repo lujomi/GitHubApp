@@ -20,6 +20,7 @@ class HomeActivityPresenter(private var view: HomeContract.View?) : HomeContract
 
     override fun sendRequest(query: String, sort: String) {
         view?.showProgress()
+        view?.hideKeyboard()
         api.getRepository(query, sort).enqueue(object : Callback<RepositoriesResponse> {
             override fun onFailure(call: Call<RepositoriesResponse>, t: Throwable) {
                 view?.hideProgress()
@@ -45,9 +46,5 @@ class HomeActivityPresenter(private var view: HomeContract.View?) : HomeContract
 
     override fun onRepositoryDetailsClicked(repository: Repository) {
         view?.showRepositoryDetailsScreen(repository)
-    }
-
-    override fun setKeyboard() {
-        view?.hideKeyboard()
     }
 }
