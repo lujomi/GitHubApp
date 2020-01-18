@@ -7,5 +7,6 @@ class Constants {
         const val SORT_BY_FORKS = "forks"
         const val SORT_BY_STARS = "stars"
         const val SORT_BY_UPDATES = "updates"
+        const val BASE_URL = "https://api.github.com/"
     }
 }
