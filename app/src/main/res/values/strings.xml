@@ -8,6 +8,7 @@
     <string name="forks_numb">Forks number: %s</string>
     <string name="issues_numb">Issues number: %s</string>
     <string name="btn_sort_by_stars">Sort by stars</string>
+    <string name="unknown_date">Unknown date</string>
     <string name="btn_sort_by_forks">Sort by forks</string>
     <string name="btn_sort_by_updated">Sort by updated</string>
     <string name="enter_query_hint">Enter query</string>
@@ -16,4 +17,6 @@
     <string name="open_web_user">Open in web</string>
     <string name="name_not_available">Name is not available</string>
     <string name="number_not_available">Number is not available</string>
+    <string name="created_date">Created date is: %s</string>
+    <string name="updated_date">Updated date is: %s</string>
 </resources>
