@@ -20,19 +20,19 @@ class RepositoryDetailsPresenter(private var view: RepositoryDetailsContract.Vie
     }
 
     override fun showUserScreen() {
-        repository.userInfo?.let { view!!.sendUserDetails(it) }
+        repository.userInfo?.let { view?.sendUserDetails(it) }
     }
 
     override fun openRepoInWeb() {
-        repository.repositoryUrl?.let { view!!.openInWeb(it) }
+        repository.repositoryUrl?.let { view?.openInWeb(it) }
     }
 
     override fun setRepository(repository: Repository) {
         this.repository = repository
-        view!!.setRepositoryName(repository.repositoryName)
-        view!!.setProgramLnaguageName(repository.programmingLanguage)
-        view!!.setRepositoryCreatedDate(repository.createdDate)
-        view!!.setRepositoryUpdatedDate(repository.updateDate)
-        if(repository.repositoryUrl != null) view!!.showWebBtn()
+        view?.setRepositoryName(repository.repositoryName)
+        view?.setProgramLnaguageName(repository.programmingLanguage)
+        view?.setRepositoryCreatedDate(repository.createdDate)
+        view?.setRepositoryUpdatedDate(repository.updateDate)
+        if(repository.repositoryUrl != null) view?.showWebBtn()
     }
 }

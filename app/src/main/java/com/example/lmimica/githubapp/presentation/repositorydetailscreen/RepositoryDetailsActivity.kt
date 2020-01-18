@@ -33,11 +33,11 @@ class RepositoryDetailsActivity : AppCompatActivity(), RepositoryDetailsContract
         }
 
     override fun setRepositoryName(string: String?) {
-        repositoryNameScreen.text = resources.getString(R.string.repo_name, string ?: resources.getString(R.string.name_not_available))
+        repositoryNameScreen.text = resources.getString(R.string.repo_name, string ?: resources.getString(R.string.info_not_available))
     }
 
     override fun setProgramLnaguageName(string: String?) {
-        programmingLanguageName.text = resources.getString(R.string.programming_language, string ?: resources.getString(R.string.name_not_available))
+        programmingLanguageName.text = resources.getString(R.string.programming_language, string ?: resources.getString(R.string.info_not_available))
     }
 
     override fun setRepositoryCreatedDate(date: Date?) {

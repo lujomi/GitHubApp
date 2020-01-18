@@ -26,6 +26,14 @@ class UserDetailsActivity : AppCompatActivity(), UserDetailsContract.View {
         }
     }
 
+    override fun setUserType(string: String?) {
+        userType.text = resources.getString(R.string.user_type, string ?: resources.getString(R.string.info_not_available))
+    }
+
+    override fun setUserNodeId(string: String?) {
+        nodeId.text = resources.getString(R.string.user_node_id, string ?: resources.getString(R.string.info_not_available))
+    }
+
     override fun setUserImage(string: String?) {
         Glide.with(this)
             .load(string)
@@ -34,11 +42,11 @@ class UserDetailsActivity : AppCompatActivity(), UserDetailsContract.View {
     }
 
     override fun setUserName(string: String?) {
-        userDetailsName.text = resources.getString(R.string.repo_name, string ?: resources.getString(R.string.name_not_available))
+        userDetailsName.text = resources.getString(R.string.repo_name, string ?: resources.getString(R.string.info_not_available))
     }
 
     override fun setUserId(string: String?) {
-        UserDetailsId.text = resources.getString(R.string.user_id, string ?: resources.getString(R.string.name_not_available))
+        userDetailsId.text = resources.getString(R.string.user_id, string ?: resources.getString(R.string.info_not_available))
     }
 
     override fun openInWeb(string: String) {
