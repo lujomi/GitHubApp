@@ -15,7 +15,7 @@ class UserDetailsPresenter(private var view: UserDetailsContract.View?): UserDet
         view?.setUserId(userInfo.userId)
         view?.setUserImage(userInfo.userImage)
         view?.setUserType(userInfo.userType)
-        view?.setUserNodeId(userInfo.nodeId)
+        view?.setUserNodeId(userInfo.userNodeId)
         if(userInfo.userUrl != null) view?.showWebBtn()
     }
 

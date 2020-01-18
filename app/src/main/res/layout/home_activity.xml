@@ -1,83 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".presentation.homeactivity.HomeActivity">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_custom"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <EditText
-            android:id="@+id/queryEditText"
-            android:layout_width="150dp"
-            android:layout_height="40dp"
-            android:layout_alignParentTop="true"
-            android:hint="@string/enter_query_hint"
-            android:background="@android:color/white"
-            android:paddingLeft="10dp"
-            android:layout_marginLeft="50dp"
-            android:inputType="text"
-            android:textSize="18sp" />
-
-        <ImageButton
-            android:id="@+id/sendQueryBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
-            android:background="@drawable/selector_gray"
-            android:padding="12dp"
-            android:src="@drawable/ic_search" />
-    </androidx.appcompat.widget.Toolbar>
-
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:minHeight="50dp"
         android:minWidth="50dp"
+        android:minHeight="50dp"
         android:visibility="gone"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/queryEditText"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:background="@android:color/white"
+            android:hint="@string/enter_query_hint"
+            android:inputType="text"
+            android:paddingLeft="10dp"
+            android:textSize="18sp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <ImageButton
+            android:id="@+id/sendQueryBtn"
+            android:layout_width="40dp"
+            android:layout_height="50dp"
+            android:background="@drawable/selector_gray"
+            android:src="@drawable/ic_search"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/queryEditText"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
-        android:layout_below="@id/toolbar_custom"
-        android:layout_above="@id/btnContainer"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/sortGroupBtn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/queryEditText" />
 
-    <LinearLayout
-        android:id="@+id/btnContainer"
-        android:layout_alignParentBottom="true"
+    <RadioGroup
+        android:id="@+id/sortGroupBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <RadioGroup
-            android:id="@+id/sortGroupBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="gone">
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
         <RadioButton
             android:id="@+id/btnSortStars"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:text="@string/btn_sort_by_stars"/>
+            android:text="@string/btn_sort_by_stars" />
+
         <RadioButton
             android:id="@+id/btnSortForks"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:checked="true"
-            android:text="@string/btn_sort_by_forks"/>
+            android:text="@string/btn_sort_by_forks" />
+
         <RadioButton
             android:id="@+id/btnSortUpdated"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:text="@string/btn_sort_by_updated"/>
-        </RadioGroup>
-    </LinearLayout>
+            android:text="@string/btn_sort_by_updated" />
+    </RadioGroup>
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

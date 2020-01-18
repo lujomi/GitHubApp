@@ -2,8 +2,9 @@
     <string name="app_name">GitHub app</string>
     <string name="user_name">User name is: %s</string>
     <string name="user_id">User id is: %s</string>
-    <string name="repo_name">Repository name is: %s</string>
+    <string name="repository_name">Repository name is: %s</string>
     <string name="programming_language">Programming language is: %s</string>
+    <string name="repository_description">Repository description is: %s</string>
     <string name="followers_numb">Followers number: %s</string>
     <string name="forks_numb">Forks number: %s</string>
     <string name="issues_numb">Issues number: %s</string>
@@ -13,8 +14,8 @@
     <string name="btn_sort_by_updated">Sort by updated</string>
     <string name="enter_query_hint">Enter query</string>
     <string name="show_user_detail">Show user</string>
-    <string name="open_web_repo">Open in web</string>
-    <string name="open_web_user">Open in web</string>
+    <string name="open_web_repository">Open web browser</string>
+    <string name="open_web_user">Open web browser</string>
     <string name="info_not_available">Information is not available</string>
     <string name="created_date">Created date is: %s</string>
     <string name="updated_date">Updated date is: %s</string>

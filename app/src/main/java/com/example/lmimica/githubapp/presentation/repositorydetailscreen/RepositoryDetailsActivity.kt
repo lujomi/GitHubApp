@@ -30,12 +30,19 @@ class RepositoryDetailsActivity : AppCompatActivity(), RepositoryDetailsContract
            repoDetailsPresenter.openRepoInWeb() }
         }
 
+    override fun setRepositoryDescrition(string: String?) {
+        repositoryDescription.text = resources.getString(R.string.repository_description,
+            string ?: resources.getString(R.string.info_not_available))
+    }
+
     override fun setRepositoryName(string: String?) {
-        repositoryNameScreen.text = resources.getString(R.string.repo_name, string ?: resources.getString(R.string.info_not_available))
+        repositoryName.text = resources.getString(R.string.repository_name,
+            string ?: resources.getString(R.string.info_not_available))
     }
 
     override fun setProgramLnaguageName(string: String?) {
-        programmingLanguageName.text = resources.getString(R.string.programming_language, string ?: resources.getString(R.string.info_not_available))
+        programmingLanguageName.text = resources.getString(R.string.programming_language,
+            string ?: resources.getString(R.string.info_not_available))
     }
 
     override fun setRepositoryCreatedDate(string: String) {

@@ -30,7 +30,7 @@ class HomeActivityPresenter(private var view: HomeContract.View?) : HomeContract
             override fun onResponse(call: Call<RepositoriesResponse>, response: Response<RepositoriesResponse>) {
                 Timber.d("Response is call")
                 view?.hideProgress()
-                view?.showList(response.body()!!.repositoriesList)
+                response.body()?.repositoriesList?.let { view?.showList(it) }
                 view?.setSortButtonsVisibility()
             }
         })

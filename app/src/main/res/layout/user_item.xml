@@ -8,40 +8,45 @@
         android:id="@+id/user_image"
         android:layout_width="80dp"
         android:layout_height="100dp"
-        android:layout_margin="10dp"/>
+        android:layout_margin="10dp" />
+
     <LinearLayout
         android:id="@+id/user_info_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_margin="10dp">
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+
         <TextView
             android:id="@+id/userName"
             android:layout_width="wrap_content"
-            android:text="@string/user_name"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="@string/user_name" />
+
         <TextView
             android:id="@+id/repositoryName"
-            android:text="@string/repo_name"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="@string/repository_name" />
+
         <TextView
             android:id="@+id/followersNumb"
-            android:text="@string/followers_numb"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="@string/followers_numb" />
+
         <TextView
             android:id="@+id/forksNumb"
-            android:text="@string/forks_numb"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="@string/forks_numb" />
+
         <TextView
             android:id="@+id/issuesNumb"
-            android:text="@string/issues_numb"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="@string/issues_numb" />
     </LinearLayout>
-
 
 
 </LinearLayout>

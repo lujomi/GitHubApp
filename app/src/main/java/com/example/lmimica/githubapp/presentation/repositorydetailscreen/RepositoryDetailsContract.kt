@@ -7,6 +7,7 @@ import java.util.*
 interface RepositoryDetailsContract {
 
     interface View {
+        fun setRepositoryDescrition(string: String?)
         fun setRepositoryName(string: String?)
         fun setProgramLnaguageName(string: String?)
         fun setRepositoryCreatedDate(string: String)

@@ -1,4 +1,4 @@
-package com.example.lmimica.githubapp
+package com.example.lmimica.githubapp.di
 
 import com.example.lmimica.githubapp.presentation.homeactivity.HomeContract
 import com.example.lmimica.githubapp.presentation.homeactivity.HomeActivityPresenter

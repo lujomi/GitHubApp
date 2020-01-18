@@ -33,6 +33,7 @@ class RepositoryDetailsPresenter(private var view: RepositoryDetailsContract.Vie
         view?.setProgramLnaguageName(repository.programmingLanguage)
         view?.setRepositoryCreatedDate(formatDate(repository.createdDate))
         view?.setRepositoryUpdatedDate(formatDate(repository.updateDate))
+        view?.setRepositoryDescrition(repository.repositoryDescription)
         if(repository.repositoryUrl != null) view?.showWebBtn()
     }
 }

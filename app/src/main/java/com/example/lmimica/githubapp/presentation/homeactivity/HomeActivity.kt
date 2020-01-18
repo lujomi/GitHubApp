@@ -7,7 +7,6 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.RadioGroup
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.lmimica.githubapp.Constants
 import com.example.lmimica.githubapp.model.Repository
@@ -21,17 +20,13 @@ import org.koin.core.parameter.parametersOf
 class HomeActivity : AppCompatActivity(), HomeContract.View, HomeActivityAdapter.UserClickListener,
     RadioGroup.OnCheckedChangeListener {
 
-    private val homeActivityPresenter: HomeActivityPresenter by inject{(parametersOf(this))}
+    private val homeActivityPresenter: HomeActivityPresenter by inject { (parametersOf(this)) }
 
     private var sortQuery: String = Constants.SORT_BY_FORKS
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home_activity)
-
-        val toolbar = toolbar_custom
-        toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.colorPrimary))
-        setSupportActionBar(toolbar)
 
         sendQueryBtn.setOnClickListener {
             homeActivityPresenter.sendRequest(queryEditText.text.toString(), sortQuery)
@@ -79,8 +74,12 @@ class HomeActivity : AppCompatActivity(), HomeContract.View, HomeActivityAdapter
     }
 
     override fun hideKeyboard() {
-        val inputMethodManager = this.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        inputMethodManager.hideSoftInputFromWindow(currentFocus?.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
+        val inputMethodManager =
+            this.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.hideSoftInputFromWindow(
+            currentFocus?.windowToken,
+            InputMethodManager.HIDE_NOT_ALWAYS
+        )
     }
 
     override fun userDetailsClicked(repository: Repository) {
