@@ -14,7 +14,7 @@ import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 
 class RepositoryDetailsActivity : AppCompatActivity(), RepositoryDetailsContract.View {
-    private val repoDetailsPresenter: RepositoryDetailsPresenter by inject {(parametersOf(this)) }
+    private val repoDetailsPresenter: RepositoryDetailsPresenter by inject { (parametersOf(this)) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,37 +23,44 @@ class RepositoryDetailsActivity : AppCompatActivity(), RepositoryDetailsContract
         repoDetailsPresenter.setRepository(intent.extras?.getParcelable(Constants.REPOSITIRY_KEY)!!)
 
         btnShowUser.setOnClickListener {
-           repoDetailsPresenter.showUserScreen()
+            repoDetailsPresenter.showUserScreen()
         }
 
         btnOpenWeb.setOnClickListener {
-           repoDetailsPresenter.openRepoInWeb() }
+            repoDetailsPresenter.openRepoInWeb()
         }
+    }
 
-    override fun setRepositoryDescrition(string: String?) {
-        repositoryDescription.text = resources.getString(R.string.repository_description,
-            string ?: resources.getString(R.string.info_not_available))
+    override fun setRepositoryDescription(string: String?) {
+        repositoryDescription.text = resources.getString(
+            R.string.repository_description,
+            string ?: resources.getString(R.string.info_not_available)
+        )
     }
 
     override fun setRepositoryName(string: String?) {
-        repositoryName.text = resources.getString(R.string.repository_name,
-            string ?: resources.getString(R.string.info_not_available))
+        repositoryName.text = resources.getString(
+            R.string.repository_name,
+            string ?: resources.getString(R.string.info_not_available)
+        )
     }
 
-    override fun setProgramLnaguageName(string: String?) {
-        programmingLanguageName.text = resources.getString(R.string.programming_language,
-            string ?: resources.getString(R.string.info_not_available))
+    override fun setProgramLanguageName(string: String?) {
+        programmingLanguageName.text = resources.getString(
+            R.string.programming_language,
+            string ?: resources.getString(R.string.info_not_available)
+        )
     }
 
     override fun setRepositoryCreatedDate(string: String) {
         var text = string
-        if ("".equals(text)) text = resources.getString(R.string.unknown_date)
+        if (text.isEmpty()) text = resources.getString(R.string.unknown_date)
         createdDate.text = resources.getString(R.string.created_date, text)
     }
 
     override fun setRepositoryUpdatedDate(string: String) {
         var text = string
-        if(text.isEmpty()) text = resources.getString(R.string.unknown_date)
+        if (text.isEmpty()) text = resources.getString(R.string.unknown_date)
         updatedDate.text = resources.getString(R.string.updated_date, text)
     }
 

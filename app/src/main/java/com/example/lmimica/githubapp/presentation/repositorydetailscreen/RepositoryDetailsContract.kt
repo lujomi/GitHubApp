@@ -2,14 +2,13 @@ package com.example.lmimica.githubapp.presentation.repositorydetailscreen
 
 import com.example.lmimica.githubapp.model.Repository
 import com.example.lmimica.githubapp.model.UserInfo
-import java.util.*
 
 interface RepositoryDetailsContract {
 
     interface View {
-        fun setRepositoryDescrition(string: String?)
+        fun setRepositoryDescription(string: String?)
         fun setRepositoryName(string: String?)
-        fun setProgramLnaguageName(string: String?)
+        fun setProgramLanguageName(string: String?)
         fun setRepositoryCreatedDate(string: String)
         fun setRepositoryUpdatedDate(string: String)
         fun sendUserDetails(user: UserInfo)
@@ -17,7 +16,7 @@ interface RepositoryDetailsContract {
         fun showWebBtn()
     }
 
-    interface Presenter{
+    interface Presenter {
         fun detach()
         fun showUserScreen()
         fun openRepoInWeb()

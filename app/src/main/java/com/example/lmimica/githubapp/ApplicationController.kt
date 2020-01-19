@@ -18,7 +18,7 @@ class ApplicationController : Application() {
             modules(listOf(presenterModule, retrofitModule))
         }
 
-        if(BuildConfig.DEBUG) {
+        if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
         }
     }

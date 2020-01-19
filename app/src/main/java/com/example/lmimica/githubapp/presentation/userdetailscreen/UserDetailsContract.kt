@@ -12,6 +12,7 @@ interface UserDetailsContract {
         fun openInWeb(string: String)
         fun showWebBtn()
     }
+
     interface Presenter {
         fun detach()
         fun setUserInfo(userInfo: UserInfo)

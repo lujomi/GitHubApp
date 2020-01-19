@@ -13,7 +13,7 @@ import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 
 class UserDetailsActivity : AppCompatActivity(), UserDetailsContract.View {
-    private val userDetailsPresenter: UserDetailsPresenter by inject {(parametersOf(this))}
+    private val userDetailsPresenter: UserDetailsPresenter by inject { (parametersOf(this)) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,13 +27,17 @@ class UserDetailsActivity : AppCompatActivity(), UserDetailsContract.View {
     }
 
     override fun setUserType(string: String?) {
-        userType.text = resources.getString(R.string.user_type,
-            string ?: resources.getString(R.string.info_not_available))
+        userType.text = resources.getString(
+            R.string.user_type,
+            string ?: resources.getString(R.string.info_not_available)
+        )
     }
 
     override fun setUserNodeId(string: String?) {
-        nodeId.text = resources.getString(R.string.user_node_id,
-            string ?: resources.getString(R.string.info_not_available))
+        nodeId.text = resources.getString(
+            R.string.user_node_id,
+            string ?: resources.getString(R.string.info_not_available)
+        )
     }
 
     override fun setUserImage(string: String?) {
@@ -44,13 +48,17 @@ class UserDetailsActivity : AppCompatActivity(), UserDetailsContract.View {
     }
 
     override fun setUserName(string: String?) {
-        userDetailsName.text = resources.getString(R.string.user_name,
-            string ?: resources.getString(R.string.info_not_available))
+        userDetailsName.text = resources.getString(
+            R.string.user_name,
+            string ?: resources.getString(R.string.info_not_available)
+        )
     }
 
     override fun setUserId(string: String?) {
-        userDetailsId.text = resources.getString(R.string.user_id,
-            string ?: resources.getString(R.string.info_not_available))
+        userDetailsId.text = resources.getString(
+            R.string.user_id,
+            string ?: resources.getString(R.string.info_not_available)
+        )
     }
 
     override fun openInWeb(string: String) {

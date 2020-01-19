@@ -19,7 +19,7 @@ class HomeActivityAdapter(
 
     interface UserClickListener {
         fun userDetailsClicked(repository: Repository)
-        fun repoositoryDetailsClicked(repository: Repository)
+        fun repositoryDetailsClicked(repository: Repository)
     }
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -39,7 +39,7 @@ class HomeActivityAdapter(
 
             userInfoContainer.setOnClickListener {
                 val position: Int = adapterPosition
-                listener.repoositoryDetailsClicked(repositories[position])
+                listener.repositoryDetailsClicked(repositories[position])
             }
 
         }
@@ -61,16 +61,26 @@ class HomeActivityAdapter(
             .fallback(R.drawable.no_image)
             .into(holder.userImage)
 
-        holder.repositoryName.text = (holder.itemView.context.getString(R.string.repository_name,
-            repositories[position].repositoryName ?: R.string.info_not_available))
-        holder.forksNumb.text = (holder.itemView.context.getString(R.string.forks_numb,
-            repositories[position].forksNumber ?: R.string.info_not_available))
-        holder.issuesNumb.text = (holder.itemView.context.getString(R.string.issues_numb,
-            repositories[position].issuesNumber ?: R.string.info_not_available))
-        holder.followersNumb.text = (holder.itemView.context.getString(R.string.followers_numb,
-            repositories[position].followersNumber ?: R.string.info_not_available))
-        holder.userName.text = (holder.itemView.context.getString(R.string.user_name,
-            repositories[position].userInfo?.userName ?: R.string.info_not_available))
+        holder.repositoryName.text = (holder.itemView.context.getString(
+            R.string.repository_name,
+            repositories[position].repositoryName ?: R.string.info_not_available
+        ))
+        holder.forksNumb.text = (holder.itemView.context.getString(
+            R.string.forks_numb,
+            repositories[position].forksNumber ?: R.string.info_not_available
+        ))
+        holder.issuesNumb.text = (holder.itemView.context.getString(
+            R.string.issues_numb,
+            repositories[position].issuesNumber ?: R.string.info_not_available
+        ))
+        holder.followersNumb.text = (holder.itemView.context.getString(
+            R.string.followers_numb,
+            repositories[position].followersNumber ?: R.string.info_not_available
+        ))
+        holder.userName.text = (holder.itemView.context.getString(
+            R.string.user_name,
+            repositories[position].userInfo?.userName ?: R.string.info_not_available
+        ))
     }
 
 }

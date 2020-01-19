@@ -2,11 +2,12 @@ package com.example.lmimica.githubapp.presentation.userdetailscreen
 
 import com.example.lmimica.githubapp.model.UserInfo
 
-class UserDetailsPresenter(private var view: UserDetailsContract.View?): UserDetailsContract.Presenter {
+class UserDetailsPresenter(private var view: UserDetailsContract.View?) :
+    UserDetailsContract.Presenter {
     private lateinit var userInfo: UserInfo
 
     override fun detach() {
-       view = null
+        view = null
     }
 
     override fun setUserInfo(userInfo: UserInfo) {
@@ -16,7 +17,7 @@ class UserDetailsPresenter(private var view: UserDetailsContract.View?): UserDet
         view?.setUserImage(userInfo.userImage)
         view?.setUserType(userInfo.userType)
         view?.setUserNodeId(userInfo.userNodeId)
-        if(userInfo.userUrl != null) view?.showWebBtn()
+        if (userInfo.userUrl != null) view?.showWebBtn()
     }
 
     override fun openUserInWeb() {

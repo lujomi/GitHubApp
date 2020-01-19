@@ -86,7 +86,7 @@ class HomeActivity : AppCompatActivity(), HomeContract.View, HomeActivityAdapter
         homeActivityPresenter.onUserDetailsClicked(repository)
     }
 
-    override fun repoositoryDetailsClicked(repository: Repository) {
+    override fun repositoryDetailsClicked(repository: Repository) {
         homeActivityPresenter.onRepositoryDetailsClicked(repository)
     }
 

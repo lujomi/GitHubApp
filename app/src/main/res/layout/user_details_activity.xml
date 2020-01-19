@@ -16,25 +16,25 @@
         android:id="@+id/userDetailsName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/user_name" />
+        tools:text="@string/user_name" />
 
     <TextView
         android:id="@+id/userDetailsId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/user_id" />
+        tools:text="@string/user_id" />
 
     <TextView
         android:id="@+id/nodeId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/user_node_id" />
+        tools:text="@string/user_node_id" />
 
     <TextView
         android:id="@+id/userType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/user_type" />
+        tools:text="@string/user_type" />
 
     <Button
         android:id="@+id/btnOpenUserWeb"
