@@ -11,6 +11,7 @@ interface HomeContract {
         fun showRepositoryDetailsScreen(repository: Repository)
         fun setSortButtonsVisibility()
         fun hideKeyboard()
+        fun showToastMessage(message: String)
     }
 
     interface Presenter {

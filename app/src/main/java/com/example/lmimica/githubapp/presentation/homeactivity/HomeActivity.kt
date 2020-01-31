@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.RadioGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.lmimica.githubapp.Constants
@@ -16,6 +17,7 @@ import com.example.lmimica.githubapp.presentation.userdetailscreen.UserDetailsAc
 import kotlinx.android.synthetic.main.home_activity.*
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
+import java.util.logging.Level
 
 class HomeActivity : AppCompatActivity(), HomeContract.View, HomeActivityAdapter.UserClickListener,
     RadioGroup.OnCheckedChangeListener {
@@ -80,6 +82,10 @@ class HomeActivity : AppCompatActivity(), HomeContract.View, HomeActivityAdapter
             currentFocus?.windowToken,
             InputMethodManager.HIDE_NOT_ALWAYS
         )
+    }
+
+    override fun showToastMessage(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
     override fun userDetailsClicked(repository: Repository) {

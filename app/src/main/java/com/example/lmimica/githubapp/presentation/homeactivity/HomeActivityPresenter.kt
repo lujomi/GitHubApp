@@ -29,7 +29,15 @@ class HomeActivityPresenter(
             ) {
                 Timber.d("onResponse is call")
                 view?.hideProgress()
-                response.body()?.repositoriesList?.let { view?.showList(it) }
+                if (response.isSuccessful) {
+                    if (response.body()?.repositoriesList?.isEmpty()!!) {
+                        view?.showToastMessage("List is empty")
+                    } else {
+                        response.body()?.repositoriesList?.let { view?.showList(it) }
+                    }
+                } else {
+                    response.errorBody()?.string()?.let { view?.showToastMessage(it) }
+                }
                 view?.setSortButtonsVisibility()
             }
         })
