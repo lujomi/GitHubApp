@@ -8,6 +8,7 @@ import android.view.View
 import com.bumptech.glide.Glide
 import com.example.lmimica.githubapp.Constants
 import com.example.lmimica.githubapp.R
+import com.example.lmimica.githubapp.model.UserInfo
 import kotlinx.android.synthetic.main.user_details_activity.*
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
@@ -26,48 +27,45 @@ class UserDetailsActivity : AppCompatActivity(), UserDetailsContract.View {
         }
     }
 
-    override fun setUserType(string: String?) {
-        userType.text = resources.getString(
-            R.string.user_type,
-            string ?: resources.getString(R.string.info_not_available)
-        )
+    override fun onDestroy() {
+        userDetailsPresenter.detach()
+        super.onDestroy()
     }
 
-    override fun setUserNodeId(string: String?) {
-        nodeId.text = resources.getString(
-            R.string.user_node_id,
-            string ?: resources.getString(R.string.info_not_available)
-        )
-    }
-
-    override fun setUserImage(string: String?) {
+    override fun setUserFields(userInfo: UserInfo) {
         Glide.with(this)
-            .load(string)
+            .load(userInfo.userImage)
             .fallback(R.drawable.no_image)
             .into(userDetailsImage)
-    }
 
-    override fun setUserName(string: String?) {
+        userType.text = resources.getString(
+            R.string.user_type,
+            userInfo.userType ?: resources.getString(R.string.info_not_available)
+        )
+
+        nodeId.text = resources.getString(
+            R.string.user_node_id,
+            userInfo.userNodeId ?: resources.getString(R.string.info_not_available)
+        )
+
         userDetailsName.text = resources.getString(
             R.string.user_name,
-            string ?: resources.getString(R.string.info_not_available)
+            userInfo.userName ?: resources.getString(R.string.info_not_available)
         )
-    }
 
-    override fun setUserId(string: String?) {
         userDetailsId.text = resources.getString(
             R.string.user_id,
-            string ?: resources.getString(R.string.info_not_available)
+            userInfo.userId ?: resources.getString(R.string.info_not_available)
         )
+
+        if (userInfo.userUrl != null) {
+            btnOpenUserWeb.visibility = View.VISIBLE
+        }
     }
 
     override fun openInWeb(string: String) {
         val url = Uri.parse(string)
         val intent = Intent(Intent.ACTION_VIEW, url)
         startActivity(intent)
-    }
-
-    override fun showWebBtn() {
-        btnOpenUserWeb.visibility = View.VISIBLE
     }
 }

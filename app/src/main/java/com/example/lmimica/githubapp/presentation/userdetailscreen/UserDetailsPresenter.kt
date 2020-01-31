@@ -12,12 +12,7 @@ class UserDetailsPresenter(private var view: UserDetailsContract.View?) :
 
     override fun setUserInfo(userInfo: UserInfo) {
         this.userInfo = userInfo
-        view?.setUserName(userInfo.userName)
-        view?.setUserId(userInfo.userId)
-        view?.setUserImage(userInfo.userImage)
-        view?.setUserType(userInfo.userType)
-        view?.setUserNodeId(userInfo.userNodeId)
-        if (userInfo.userUrl != null) view?.showWebBtn()
+        view?.setUserFields(userInfo)
     }
 
     override fun openUserInWeb() {

@@ -7,6 +7,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.lmimica.githubapp.Constants
 import com.example.lmimica.githubapp.R
+import com.example.lmimica.githubapp.model.Repository
 import com.example.lmimica.githubapp.model.UserInfo
 import com.example.lmimica.githubapp.presentation.userdetailscreen.UserDetailsActivity
 import kotlinx.android.synthetic.main.repository_details_activity.*
@@ -31,37 +32,38 @@ class RepositoryDetailsActivity : AppCompatActivity(), RepositoryDetailsContract
         }
     }
 
-    override fun setRepositoryDescription(string: String?) {
+    override fun onDestroy() {
+        repoDetailsPresenter.detach()
+        super.onDestroy()
+    }
+
+    override fun setRepositoryFields(repository: Repository) {
         repositoryDescription.text = resources.getString(
             R.string.repository_description,
-            string ?: resources.getString(R.string.info_not_available)
+            repository.repositoryDescription ?: resources.getString(R.string.info_not_available)
         )
-    }
 
-    override fun setRepositoryName(string: String?) {
         repositoryName.text = resources.getString(
             R.string.repository_name,
-            string ?: resources.getString(R.string.info_not_available)
+            repository.repositoryName ?: resources.getString(R.string.info_not_available)
         )
-    }
 
-    override fun setProgramLanguageName(string: String?) {
         programmingLanguageName.text = resources.getString(
             R.string.programming_language,
-            string ?: resources.getString(R.string.info_not_available)
+            repository.programmingLanguage ?: resources.getString(R.string.info_not_available)
         )
-    }
 
-    override fun setRepositoryCreatedDate(string: String) {
-        var text = string
-        if (text.isEmpty()) text = resources.getString(R.string.unknown_date)
-        createdDate.text = resources.getString(R.string.created_date, text)
-    }
+        var dateCreated = repoDetailsPresenter.formatDate(repository.createdDate)
+        if (dateCreated.isEmpty()) dateCreated = resources.getString(R.string.unknown_date)
+        createdDate.text = resources.getString(R.string.created_date, dateCreated)
 
-    override fun setRepositoryUpdatedDate(string: String) {
-        var text = string
-        if (text.isEmpty()) text = resources.getString(R.string.unknown_date)
-        updatedDate.text = resources.getString(R.string.updated_date, text)
+        var dateUpdated = repoDetailsPresenter.formatDate(repository.updateDate)
+        if (dateUpdated.isEmpty()) dateUpdated = resources.getString(R.string.unknown_date)
+        updatedDate.text = resources.getString(R.string.updated_date, dateUpdated)
+
+        if (repository.repositoryUrl != null) {
+            btnOpenWeb.visibility = View.VISIBLE
+        }
     }
 
     override fun sendUserDetails(user: UserInfo) {
@@ -74,9 +76,5 @@ class RepositoryDetailsActivity : AppCompatActivity(), RepositoryDetailsContract
         val url = Uri.parse(string)
         val intent = Intent(Intent.ACTION_VIEW, url)
         startActivity(intent)
-    }
-
-    override fun showWebBtn() {
-        btnOpenWeb.visibility = View.VISIBLE
     }
 }
