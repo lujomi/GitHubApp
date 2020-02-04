@@ -1,20 +1,11 @@
 package com.example.lmimica.githubapp.presentation.repositorydetailscreen
 
-import com.example.lmimica.githubapp.model.Repository
-import java.text.SimpleDateFormat
-import java.util.*
+import com.example.lmimica.githubapp.presentation.RepositoryViewModel
 
 class RepositoryDetailsPresenter(private var view: RepositoryDetailsContract.View?) :
     RepositoryDetailsContract.Presenter {
-    private lateinit var repository: Repository
+    private lateinit var repository: RepositoryViewModel
 
-
-    override fun formatDate(date: Date?): String {
-        if (date != null) {
-            val simpleDateFormat = SimpleDateFormat.getDateInstance()
-            return simpleDateFormat.format(date)
-        } else return ""
-    }
 
     override fun detach() {
         view = null
@@ -28,7 +19,7 @@ class RepositoryDetailsPresenter(private var view: RepositoryDetailsContract.Vie
         repository.repositoryUrl?.let { view?.openInWeb(it) }
     }
 
-    override fun setRepository(repository: Repository) {
+    override fun setRepository(repository: RepositoryViewModel) {
         this.repository = repository
         view?.setRepositoryFields(repository)
     }

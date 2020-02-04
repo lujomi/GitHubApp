@@ -1,8 +1,9 @@
 package com.example.lmimica.githubapp.presentation.homeactivity
 
+import com.example.lmimica.githubapp.presentation.Mapper
 import com.example.lmimica.githubapp.api.GithubApi
-import com.example.lmimica.githubapp.model.Repository
 import com.example.lmimica.githubapp.model.RepositoriesResponse
+import com.example.lmimica.githubapp.presentation.RepositoryViewModel
 
 import retrofit2.Call
 import retrofit2.Callback
@@ -29,14 +30,13 @@ class HomeActivityPresenter(
             ) {
                 Timber.d("onResponse is call")
                 view?.hideProgress()
-                if (response.isSuccessful) {
-                    if (response.body()?.repositoriesList?.isEmpty()!!) {
-                        view?.showToastMessage("List is empty")
-                    } else {
-                        response.body()?.repositoriesList?.let { view?.showList(it) }
-                    }
+                if (response.isSuccessful && response.body() != null
+                    && response.body()?.repositoriesList?.isNotEmpty()!!
+                ) {
+                    val repositoryList: List<RepositoryViewModel>? = Mapper.map(response.body()!!)
+                    view?.showList(repositoryList!!)
                 } else {
-                    response.errorBody()?.string()?.let { view?.showToastMessage(it) }
+                    view?.showToastMessage("List is not available")
                 }
                 view?.setSortButtonsVisibility()
             }
@@ -47,11 +47,11 @@ class HomeActivityPresenter(
         view = null
     }
 
-    override fun onUserDetailsClicked(repository: Repository) {
+    override fun onUserDetailsClicked(repository: RepositoryViewModel) {
         view?.showUsersDetailsScreen(repository)
     }
 
-    override fun onRepositoryDetailsClicked(repository: Repository) {
+    override fun onRepositoryDetailsClicked(repository: RepositoryViewModel) {
         view?.showRepositoryDetailsScreen(repository)
     }
 }

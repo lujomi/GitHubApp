@@ -8,18 +8,18 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.lmimica.githubapp.model.Repository
 import com.example.lmimica.githubapp.R
+import com.example.lmimica.githubapp.presentation.RepositoryViewModel
 import kotlinx.android.synthetic.main.user_item.view.*
 
 class HomeActivityAdapter(
-    val repositories: List<Repository>,
+    val repositories: List<RepositoryViewModel>,
     val listener: UserClickListener
 ) : RecyclerView.Adapter<HomeActivityAdapter.ViewHolder>() {
 
     interface UserClickListener {
-        fun userDetailsClicked(repository: Repository)
-        fun repositoryDetailsClicked(repository: Repository)
+        fun userDetailsClicked(repository: RepositoryViewModel)
+        fun repositoryDetailsClicked(repository: RepositoryViewModel)
     }
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {

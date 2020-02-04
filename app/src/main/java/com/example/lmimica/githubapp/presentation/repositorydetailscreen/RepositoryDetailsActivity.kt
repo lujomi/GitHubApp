@@ -7,7 +7,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.lmimica.githubapp.Constants
 import com.example.lmimica.githubapp.R
-import com.example.lmimica.githubapp.model.Repository
+import com.example.lmimica.githubapp.presentation.RepositoryViewModel
 import com.example.lmimica.githubapp.model.UserInfo
 import com.example.lmimica.githubapp.presentation.userdetailscreen.UserDetailsActivity
 import kotlinx.android.synthetic.main.repository_details_activity.*
@@ -37,7 +37,7 @@ class RepositoryDetailsActivity : AppCompatActivity(), RepositoryDetailsContract
         super.onDestroy()
     }
 
-    override fun setRepositoryFields(repository: Repository) {
+    override fun setRepositoryFields(repository: RepositoryViewModel) {
         repositoryDescription.text = resources.getString(
             R.string.repository_description,
             repository.repositoryDescription ?: resources.getString(R.string.info_not_available)
@@ -53,13 +53,15 @@ class RepositoryDetailsActivity : AppCompatActivity(), RepositoryDetailsContract
             repository.programmingLanguage ?: resources.getString(R.string.info_not_available)
         )
 
-        var dateCreated = repoDetailsPresenter.formatDate(repository.createdDate)
-        if (dateCreated.isEmpty()) dateCreated = resources.getString(R.string.unknown_date)
-        createdDate.text = resources.getString(R.string.created_date, dateCreated)
+        createdDate.text = resources.getString(
+            R.string.created_date,
+            repository.createdDate ?: resources.getString(R.string.unknown_date)
+        )
 
-        var dateUpdated = repoDetailsPresenter.formatDate(repository.updateDate)
-        if (dateUpdated.isEmpty()) dateUpdated = resources.getString(R.string.unknown_date)
-        updatedDate.text = resources.getString(R.string.updated_date, dateUpdated)
+        updatedDate.text = resources.getString(
+            R.string.updated_date,
+            repository.updateDate ?: resources.getString(R.string.unknown_date)
+        )
 
         if (repository.repositoryUrl != null) {
             btnOpenWeb.visibility = View.VISIBLE

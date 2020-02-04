@@ -1,14 +1,14 @@
 package com.example.lmimica.githubapp.presentation.homeactivity
 
-import com.example.lmimica.githubapp.model.Repository
+import com.example.lmimica.githubapp.presentation.RepositoryViewModel
 
 interface HomeContract {
     interface View {
         fun showProgress()
         fun hideProgress()
-        fun showList(repositories: List<Repository>)
-        fun showUsersDetailsScreen(repository: Repository)
-        fun showRepositoryDetailsScreen(repository: Repository)
+        fun showList(repositories: List<RepositoryViewModel>)
+        fun showUsersDetailsScreen(repository: RepositoryViewModel)
+        fun showRepositoryDetailsScreen(repository: RepositoryViewModel)
         fun setSortButtonsVisibility()
         fun hideKeyboard()
         fun showToastMessage(message: String)
@@ -17,7 +17,7 @@ interface HomeContract {
     interface Presenter {
         fun sendRequest(query: String, sort: String)
         fun detach()
-        fun onUserDetailsClicked(repository: Repository)
-        fun onRepositoryDetailsClicked(repository: Repository)
+        fun onUserDetailsClicked(repository: RepositoryViewModel)
+        fun onRepositoryDetailsClicked(repository: RepositoryViewModel)
     }
 }

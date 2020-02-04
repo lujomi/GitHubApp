@@ -8,16 +8,16 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.lmimica.githubapp.Constants
-import com.example.lmimica.githubapp.model.Repository
 import com.example.lmimica.githubapp.R
+import com.example.lmimica.githubapp.presentation.RepositoryViewModel
 import com.example.lmimica.githubapp.presentation.repositorydetailscreen.RepositoryDetailsActivity
 import com.example.lmimica.githubapp.presentation.userdetailscreen.UserDetailsActivity
 import kotlinx.android.synthetic.main.home_activity.*
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
-import java.util.logging.Level
 
 class HomeActivity : AppCompatActivity(), HomeContract.View, HomeActivityAdapter.UserClickListener,
     RadioGroup.OnCheckedChangeListener {
@@ -50,8 +50,9 @@ class HomeActivity : AppCompatActivity(), HomeContract.View, HomeActivityAdapter
         progressBar.visibility = View.GONE
     }
 
-    override fun showList(repositories: List<Repository>) {
+    override fun showList(repositories: List<RepositoryViewModel>) {
         recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.addItemDecoration(DividerItemDecoration(this, LinearLayoutManager.VERTICAL))
         recyclerView.adapter =
             HomeActivityAdapter(
                 repositories,
@@ -59,13 +60,13 @@ class HomeActivity : AppCompatActivity(), HomeContract.View, HomeActivityAdapter
             )
     }
 
-    override fun showUsersDetailsScreen(repository: Repository) {
+    override fun showUsersDetailsScreen(repository: RepositoryViewModel) {
         val intent = Intent(this, UserDetailsActivity::class.java)
         intent.putExtra(Constants.USER_INFO_KEY, repository.userInfo)
         startActivity(intent)
     }
 
-    override fun showRepositoryDetailsScreen(repository: Repository) {
+    override fun showRepositoryDetailsScreen(repository: RepositoryViewModel) {
         val intent = Intent(this, RepositoryDetailsActivity::class.java)
         intent.putExtra(Constants.REPOSITIRY_KEY, repository)
         startActivity(intent)
@@ -88,11 +89,11 @@ class HomeActivity : AppCompatActivity(), HomeContract.View, HomeActivityAdapter
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
-    override fun userDetailsClicked(repository: Repository) {
+    override fun userDetailsClicked(repository: RepositoryViewModel) {
         homeActivityPresenter.onUserDetailsClicked(repository)
     }
 
-    override fun repositoryDetailsClicked(repository: Repository) {
+    override fun repositoryDetailsClicked(repository: RepositoryViewModel) {
         homeActivityPresenter.onRepositoryDetailsClicked(repository)
     }
 
