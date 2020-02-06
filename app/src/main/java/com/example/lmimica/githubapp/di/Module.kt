@@ -2,6 +2,7 @@ package com.example.lmimica.githubapp.di
 
 import com.example.lmimica.githubapp.Constants
 import com.example.lmimica.githubapp.api.GithubApi
+import com.example.lmimica.githubapp.presentation.Mapper
 import com.example.lmimica.githubapp.presentation.homeactivity.HomeContract
 import com.example.lmimica.githubapp.presentation.homeactivity.HomeActivityPresenter
 import com.example.lmimica.githubapp.presentation.repositorydetailscreen.RepositoryDetailsContract
@@ -12,6 +13,7 @@ import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -49,8 +51,14 @@ val retrofitModule = module {
     single { provideRetrofit(get(), get()) }
     single { provideGithubApi(get()) }
 }
+
+val mapperModule = module {
+    single { Mapper(androidContext()) }
+}
+
 val presenterModule = module {
-    factory { (view: HomeContract.View) -> HomeActivityPresenter(view, get()) }
+    factory { (view: HomeContract.View) -> HomeActivityPresenter(view, get(), get()) }
     factory { (view: RepositoryDetailsContract.View) -> RepositoryDetailsPresenter(view) }
     factory { (view: UserDetailsContract.View) -> UserDetailsPresenter(view) }
 }
+

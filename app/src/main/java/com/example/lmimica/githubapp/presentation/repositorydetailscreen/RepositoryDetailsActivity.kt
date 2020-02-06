@@ -40,27 +40,27 @@ class RepositoryDetailsActivity : AppCompatActivity(), RepositoryDetailsContract
     override fun setRepositoryFields(repository: RepositoryViewModel) {
         repositoryDescription.text = resources.getString(
             R.string.repository_description,
-            repository.repositoryDescription ?: resources.getString(R.string.info_not_available)
+            repository.repositoryDescription
         )
 
         repositoryName.text = resources.getString(
             R.string.repository_name,
-            repository.repositoryName ?: resources.getString(R.string.info_not_available)
+            repository.repositoryName
         )
 
         programmingLanguageName.text = resources.getString(
             R.string.programming_language,
-            repository.programmingLanguage ?: resources.getString(R.string.info_not_available)
+            repository.programmingLanguage
         )
 
         createdDate.text = resources.getString(
             R.string.created_date,
-            repository.createdDate ?: resources.getString(R.string.unknown_date)
+            repository.createdDate
         )
 
         updatedDate.text = resources.getString(
             R.string.updated_date,
-            repository.updateDate ?: resources.getString(R.string.unknown_date)
+            repository.updateDate
         )
 
         if (repository.repositoryUrl != null) {

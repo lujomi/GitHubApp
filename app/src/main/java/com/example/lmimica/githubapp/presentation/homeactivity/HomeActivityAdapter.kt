@@ -63,19 +63,19 @@ class HomeActivityAdapter(
 
         holder.repositoryName.text = (holder.itemView.context.getString(
             R.string.repository_name,
-            repositories[position].repositoryName ?: R.string.info_not_available
+            repositories[position].repositoryName
         ))
         holder.forksNumb.text = (holder.itemView.context.getString(
             R.string.forks_numb,
-            repositories[position].forksNumber ?: R.string.info_not_available
+            repositories[position].forksNumber
         ))
         holder.issuesNumb.text = (holder.itemView.context.getString(
             R.string.issues_numb,
-            repositories[position].issuesNumber ?: R.string.info_not_available
+            repositories[position].issuesNumber
         ))
         holder.followersNumb.text = (holder.itemView.context.getString(
             R.string.followers_numb,
-            repositories[position].followersNumber ?: R.string.info_not_available
+            repositories[position].followersNumber
         ))
         holder.userName.text = (holder.itemView.context.getString(
             R.string.user_name,

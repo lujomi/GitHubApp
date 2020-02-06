@@ -1,6 +1,7 @@
 package com.example.lmimica.githubapp
 
 import android.app.Application
+import com.example.lmimica.githubapp.di.mapperModule
 import com.example.lmimica.githubapp.di.presenterModule
 import com.example.lmimica.githubapp.di.retrofitModule
 import org.koin.android.ext.koin.androidContext
@@ -15,7 +16,7 @@ class ApplicationController : Application() {
         startKoin {
             androidLogger()
             androidContext(this@ApplicationController)
-            modules(listOf(presenterModule, retrofitModule))
+            modules(listOf(presenterModule, retrofitModule, mapperModule))
         }
 
         if (BuildConfig.DEBUG) {

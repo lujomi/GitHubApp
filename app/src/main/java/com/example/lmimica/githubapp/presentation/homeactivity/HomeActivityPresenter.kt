@@ -12,7 +12,8 @@ import timber.log.Timber
 
 class HomeActivityPresenter(
     private var view: HomeContract.View?,
-    private val api: GithubApi
+    private val api: GithubApi,
+    private val mapper: Mapper
 ) : HomeContract.Presenter {
 
     override fun sendRequest(query: String, sort: String) {
@@ -33,7 +34,7 @@ class HomeActivityPresenter(
                 if (response.isSuccessful && response.body() != null
                     && response.body()?.repositoriesList?.isNotEmpty()!!
                 ) {
-                    val repositoryList: List<RepositoryViewModel>? = Mapper.map(response.body()!!)
+                    val repositoryList: List<RepositoryViewModel>? = mapper.map(response.body()!!)
                     view?.showList(repositoryList!!)
                 } else {
                     view?.showToastMessage("List is not available")
