@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.lmimica.githubapp.Constants
 import com.example.lmimica.githubapp.R
 import com.example.lmimica.githubapp.presentation.RepositoryViewModel
-import com.example.lmimica.githubapp.model.UserInfo
+import com.example.lmimica.githubapp.presentation.UserInfoViewModel
 import com.example.lmimica.githubapp.presentation.userdetailscreen.UserDetailsActivity
 import kotlinx.android.synthetic.main.repository_details_activity.*
 import org.koin.android.ext.android.inject
@@ -68,7 +68,7 @@ class RepositoryDetailsActivity : AppCompatActivity(), RepositoryDetailsContract
         }
     }
 
-    override fun sendUserDetails(user: UserInfo) {
+    override fun sendUserDetails(user: UserInfoViewModel) {
         val intent = Intent(this, UserDetailsActivity::class.java)
         intent.putExtra(Constants.USER_INFO_KEY, user)
         startActivity(intent)

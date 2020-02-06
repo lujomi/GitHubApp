@@ -3,11 +3,12 @@ package com.example.lmimica.githubapp.presentation
 import android.content.Context
 import com.example.lmimica.githubapp.R
 import com.example.lmimica.githubapp.model.RepositoriesResponse
+import com.example.lmimica.githubapp.model.UserInfo
 import java.text.SimpleDateFormat
 import java.util.*
 
 class Mapper(private val context: Context) {
-    fun map(repository: RepositoriesResponse): List<RepositoryViewModel> {
+    fun mapRepository(repository: RepositoriesResponse): List<RepositoryViewModel> {
         return repository.repositoriesList.map {
             RepositoryViewModel(
                 repositoryName = it.repositoryName
@@ -19,7 +20,7 @@ class Mapper(private val context: Context) {
                 programmingLanguage = it.programmingLanguage
                     ?: context.getString(R.string.info_not_available),
                 repositoryUrl = it.repositoryUrl,
-                userInfo = it.userInfo,
+                userInfo = it.userInfo?.mapUserInfo(),
                 repositoryDescription = it.repositoryDescription
                     ?: context.getString(R.string.info_not_available),
                 createdDate = formatDate(it.createdDate),
@@ -27,6 +28,15 @@ class Mapper(private val context: Context) {
             )
         }
     }
+
+    private fun UserInfo.mapUserInfo() = UserInfoViewModel(
+        userName = userName ?: context.getString(R.string.info_not_available),
+        userImage = userImage,
+        userUrl = userUrl,
+        userNodeId = userNodeId ?: context.getString(R.string.info_not_available),
+        userType = userType ?: context.getString(R.string.info_not_available),
+        userId = userId ?: context.getString(R.string.info_not_available)
+    )
 
     private fun formatDate(date: Date?): String {
         return if (date != null) {

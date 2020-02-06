@@ -8,7 +8,7 @@ import android.view.View
 import com.bumptech.glide.Glide
 import com.example.lmimica.githubapp.Constants
 import com.example.lmimica.githubapp.R
-import com.example.lmimica.githubapp.model.UserInfo
+import com.example.lmimica.githubapp.presentation.UserInfoViewModel
 import kotlinx.android.synthetic.main.user_details_activity.*
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
@@ -32,7 +32,7 @@ class UserDetailsActivity : AppCompatActivity(), UserDetailsContract.View {
         super.onDestroy()
     }
 
-    override fun setUserFields(userInfo: UserInfo) {
+    override fun setUserFields(userInfo: UserInfoViewModel) {
         Glide.with(this)
             .load(userInfo.userImage)
             .fallback(R.drawable.no_image)
@@ -40,22 +40,22 @@ class UserDetailsActivity : AppCompatActivity(), UserDetailsContract.View {
 
         userType.text = resources.getString(
             R.string.user_type,
-            userInfo.userType ?: resources.getString(R.string.info_not_available)
+            userInfo.userType
         )
 
         nodeId.text = resources.getString(
             R.string.user_node_id,
-            userInfo.userNodeId ?: resources.getString(R.string.info_not_available)
+            userInfo.userNodeId
         )
 
         userDetailsName.text = resources.getString(
             R.string.user_name,
-            userInfo.userName ?: resources.getString(R.string.info_not_available)
+            userInfo.userName
         )
 
         userDetailsId.text = resources.getString(
             R.string.user_id,
-            userInfo.userId ?: resources.getString(R.string.info_not_available)
+            userInfo.userId
         )
 
         if (userInfo.userUrl != null) {

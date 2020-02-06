@@ -79,7 +79,7 @@ class HomeActivityAdapter(
         ))
         holder.userName.text = (holder.itemView.context.getString(
             R.string.user_name,
-            repositories[position].userInfo?.userName ?: R.string.info_not_available
+            repositories[position].userInfo?.userName
         ))
     }
 
