@@ -38,22 +38,22 @@ class UserDetailsActivity : AppCompatActivity(), UserDetailsContract.View {
             .fallback(R.drawable.no_image)
             .into(userDetailsImage)
 
-        userType.text = resources.getString(
+        userType.text = getString(
             R.string.user_type,
             userInfo.userType
         )
 
-        nodeId.text = resources.getString(
+        nodeId.text = getString(
             R.string.user_node_id,
             userInfo.userNodeId
         )
 
-        userDetailsName.text = resources.getString(
+        userDetailsName.text = getString(
             R.string.user_name,
             userInfo.userName
         )
 
-        userDetailsId.text = resources.getString(
+        userDetailsId.text = getString(
             R.string.user_id,
             userInfo.userId
         )
